@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand shadow">
+
+    <ul class="navbar-nav mr-auto">
+        <li>
+            <%= link_to root_path do %>
+                <h1><%= image_tag "header_title.png", class:"img-fluid", alt:"無料で使える画像合成アプリのひとことメーカーで好きな画像にコメントをつけて、twitterなどのSNSでシェアしよう。ブログの記事に使う画像を作ったりもできるぞ。" %></h1>
+            <% end %>
+        </li>
+    </ul>
+     
+        <ul class="navbar-nav form-inline my-2 my-lg-0">
+            <% if session[:oauth_token].nil? %>
+            <li>
+                <%= link_to 'twitterログイン', "/auth/twitter", class: "btn btn-primary font-weight-bold", id:"login" %>
+            </li>    
+                <% else %>
+            <li>
+                <%= link_to "twitterログアウト",auth_signout_path, class: "btn btn-primary font-weight-bold", id:"logout" %>
+            </li>
+            <% end %>
+    </ul>
+</nav>

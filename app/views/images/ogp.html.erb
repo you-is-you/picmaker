@@ -1,0 +1,16 @@
+  <div class="text-justify form-group text-center">
+  <p>こんな感じに作りました</p>
+  </div>
+    <div class="form-group">
+        <img src= <%= @picture %> class="img-thumbnail">
+    </div>
+    <div class="form-group">
+    <%= button_to 'ファイルのダウンロード', images_download_path, method: :get, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+    <div class="form-group">
+        <% if session[:oauth_token].nil? %>
+            <%= button_to 'twitterでログインすると、直接ツイートできるぞ', "/auth/twitter", class: "btn btn-outline-primary btn-lg" %>
+        <% else %>
+            <%= button_to "ツイート！", images_tweet_path, class: "btn btn-outline-primary btn-lg" %>
+        <% end %>    
+    </div>
