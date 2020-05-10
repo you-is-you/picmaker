@@ -27,6 +27,7 @@ $(function(){
             Swal.fire({
                 title: 'こちらの画像でよろしいですか？',
                 imageUrl: picture,
+                showCloseButton: true,
                 imageAlt: 'Custom image',
                 confirmButtonText: '画像をツイートする',
                 footer: "<a href='"+picture+"' class=share_btn2 download='commented.png'>画像をダウンロード</a>",
@@ -54,6 +55,7 @@ $(function(){
                 title: 'こちらの画像でよろしいですか？',
                 imageUrl: picture,
                 imageAlt: 'Custom image',
+                showCloseButton: true,
                 confirmButtonText: 'twitterでログインすると、直接ツイートできるぞ',
                 footer: "<a href='"+picture+"' class=share_btn2 download='commented.png'>画像をダウンロード</a>",
                 allowOutsideClick: () => !Swal.isLoading()
@@ -86,6 +88,7 @@ $(function(){
   $("#right").on("click", function () {
     $('#preview-font').css('left', '+=10');
   });
+
   $("#vertical").on("click", function () {
     if($('#preview-font').css('writing-mode') === 'horizontal-tb'){
       $('#preview-font').css({
@@ -103,13 +106,33 @@ $(function(){
       });
     }
   });
+
   $("#font-color").on("click", function () {
     if($('#preview-font').css('color') === 'rgb(0, 0, 0)'){
       $('#preview-font').css('color', 'white');
-    } else {
+    } else{
       $('#preview-font').css('color', 'black');
     }
   });
+  
+  $("#font-lighter").on("click", function () {
+      console.log($('#preview-font').css('font-weight'))
+    if($('#preview-font').css('font-weight') == '100'){
+      $('#preview-font').css('font-weight', 'normal');
+    } else{
+      $('#preview-font').css('font-weight', 'lighter');
+    }
+  });
+  
+  $("#font-bolder").on("click", function () {
+        console.log($('#preview-font').css('font-weight'))
+    if($('#preview-font').css('font-weight') === '700'){
+      $('#preview-font').css('font-weight', 'normal');
+    } else{
+      $('#preview-font').css('font-weight', 'bold');
+    }
+  });
+
 });
 
 $(function(){

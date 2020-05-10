@@ -3,10 +3,11 @@
         <div class="row">
             <div class="col-xs-12 col-md-12">
 
-<div class="mt-5">
+<div class="mt-5 h5">
   <p>ひとつのツイートに多くの言葉をいれたいと思ったことはありませんか？</p>
   <p>ひとことメーカーはあなたの言葉を画像にすることで、１４０文字を越えてツイートすることができるツールです。</p>
   <p>合成した画像をブログのタイトル画像にしてみたり、twitterなどのSNSに投稿して遊んでください。</p>
+  <p>ひとことメーカーを使ってコラ画像を作ることもできたので、適当な画像を使ってコラ画像を作ってみても良いです。</p>
 </div>
 </div>
 </div>
@@ -17,14 +18,14 @@
 <div class="col-xs-8 col-md-8 mx-auto">
             <%= form_for @image, url: '/images/ogp', multipart: true do  |f| %>
 
-                <div class="input-group">
+                <div class="input-group my-5">
                     <div class="input-group-prepend">
                         <%= f.label :text, "コメント", class:"input-group-text" %>
                     </div>
                     <%= f.text_area :text, id:"image_text", class: "form-control", placeholder: "入力されたコメントが合成されます" %>
                 </div>
                 
-                <div class="input-group my-4 text-left">
+                <div class="input-group my-5 text-left">
                     <div class="custom-file">
                         <%= f.label :picture, "選んだ画像を合成します", class: "custom-file-label" %>
                         <%= f.file_field :picture, id:"image_picture", class: "custom-file-input", lang:"ja" %>
@@ -45,10 +46,10 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-  <button id="left" class="up share_btn"><i class="fa fa-arrow-left"></i></button>
-<button id="down" class="up share_btn"><i class="fa fa-arrow-down"></i></button>
-<button id="up" class="up share_btn"><i class="fa fa-arrow-up"></i></button>
-<button id="right" class="up share_btn"><i class="fa fa-arrow-right"></i></button>
+  <button id="left" class="up share_btn mx-3"><i class="fa fa-arrow-left"></i></button>
+<button id="down" class="up share_btn mx-3"><i class="fa fa-arrow-down"></i></button>
+<button id="up" class="up share_btn mx-3"><i class="fa fa-arrow-up"></i></button>
+<button id="right" class="up share_btn mx-3"><i class="fa fa-arrow-right"></i></button>
 </div>
 </div>
 </div>
@@ -56,10 +57,13 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-12 mb-5 mt-4">
-<button id="word-bigger" class="size share_btn"><i class="fa fa-search-plus"></i></button>
-<button id="word-smaller" class="size share_btn"><i class="fa fa-search-minus"></i></button>
-<button id="vertical" class="vertical share_btn"><i class="fa fa-ellipsis-v"></i></button>
-<button id="font-color" class="font-color share_btn"><i class="fa fa-tint"></i></button>
+<button id="word-bigger" class="size share_btn mx-3"><i class="fa fa-search-plus"></i></button>
+<button id="word-smaller" class="size share_btn mx-3"><i class="fa fa-search-minus"></i></button>
+<button id="font-color" class="font-color share_btn mx-3"><i class="fa fa-tint"></i></button>
+<button id="font-lighter" class="font-color share_btn mx-3"><i class="fa fa-compress" aria-hidden="true"></i></button>
+<button id="font-bolder" class="font-color share_btn mx-3"><i class="fa fa-expand" aria-hidden="true"></i></button>
+<button id="twitter" class="font-color share_btn mx-3"><i class="fa fa-twitter-square" aria-hidden="true"></i></button>
+
 </div>
 </div>
 </div>

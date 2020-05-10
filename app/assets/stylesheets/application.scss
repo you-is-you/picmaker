@@ -23,7 +23,7 @@
 
 @media (min-width: 576px) {
   #screenshot-target p {
-    font-size: 35px;
+    font-size: 25px;
   }
 }
 
@@ -36,7 +36,9 @@
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  font-size: 35px;
+  font-size: 25px;
+  color:black;
+
 }
 
 button{
