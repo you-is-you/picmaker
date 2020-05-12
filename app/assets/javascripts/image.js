@@ -6,15 +6,6 @@ $(function(){
 });
 
 $(function(){
-    var white_word = ["black", "kokuban", "endo2"]
-    if (white_word.includes(this.value)){
-      $('#preview-font').css('color', 'white');
-    } else {
-      $('#preview-font').css('color', 'black');
-    }
-});
-
-$(function(){
   $("#save-button").on("click", function () {
 
       // 処理前に Loading 画像を表示
@@ -89,29 +80,19 @@ $(function(){
     $('#preview-font').css('left', '+=10');
   });
 
-  $("#vertical").on("click", function () {
-    if($('#preview-font').css('writing-mode') === 'horizontal-tb'){
-      $('#preview-font').css({
-        '-webkit-writing-mode': 'vertical-rl',
-        '-ms-writing-mode': 'tb-rl',
-        'writing-mode': 'vertical-rl',
-        'text-orientation': 'upright'
-      });
-    } else {
-      $('#preview-font').css({
-        '-webkit-writing-mode': '',
-        '-ms-writing-mode': '',
-        'writing-mode': '',
-        'text-orientation': ''
-      });
-    }
-  });
-
   $("#font-color").on("click", function () {
     if($('#preview-font').css('color') === 'rgb(0, 0, 0)'){
-      $('#preview-font').css('color', 'white');
-    } else{
-      $('#preview-font').css('color', 'black');
+        $('#preview-font').css('color', 'white');
+    } else if ($('#preview-font').css('color') === 'rgb(255, 255, 255)'){
+      $('#preview-font').css('color', 'aqua');
+    } else if ($('#preview-font').css('color') === 'rgb(0, 255, 255)'){
+        $('#preview-font').css('color', 'yellow');
+    }else if ($('#preview-font').css('color') === 'rgb(255, 255, 0)'){
+        $('#preview-font').css('color', 'lime');
+    }else if ($('#preview-font').css('color') === 'rgb(0, 255, 0)'){
+        $('#preview-font').css('color', 'red');
+    }else{
+        $('#preview-font').css('color', 'black');
     }
   });
   
@@ -120,20 +101,70 @@ $(function(){
     if($('#preview-font').css('font-weight') == '100'){
       $('#preview-font').css('font-weight', 'normal');
     } else{
-      $('#preview-font').css('font-weight', 'lighter');
+      
     }
   });
   
   $("#font-bolder").on("click", function () {
-        console.log($('#preview-font').css('font-weight'))
-    if($('#preview-font').css('font-weight') === '700'){
+    if($('#preview-font').css('font-weight') === '100'){
       $('#preview-font').css('font-weight', 'normal');
-    } else{
+    } else if($('#preview-font').css('font-weight') === '400'){
       $('#preview-font').css('font-weight', 'bold');
+    }else{
+        $('#preview-font').css('font-weight', 'lighter');
     }
   });
 
+    $("#twitter").on("click", function () {
+    if($('#screenshot-target').css('height') === '253px'){
+        $('#screenshot-target').css('width', '');
+        $('#screenshot-target').css('height', '');
+    } else{
+        $('#screenshot-target').css('width', '506px');
+        $('#screenshot-target').css('height', '253px');
+    }
+  });
+
+    var angle = 1; 
+    $("#font-rotate").on("click", function () {
+        console.log(angle);
+       if (angle < 11){
+        angle += 1;
+       }else{
+        angle = 0;
+       }
+        $('#preview-font').css('transform', 'rotate(' + 30 * angle + 'deg)');
+    });
+
+    $("#font-family").on("click", function () {
+        if($('#preview-font').css('font-family')=== 'Verdana'){
+            $('#preview-font').css('font-family', 'sans-serif');
+        }else if($('#preview-font').css('font-family')=== 'sans-serif'){
+            $('#preview-font').css('font-family', 'Arial');
+        }else if($('#preview-font').css('font-family')=== 'Arial'){
+            $('#preview-font').css('font-family', 'Courier');
+        }else if($('#preview-font').css('font-family')=== 'Courier'){
+            $('#preview-font').css('font-family', 'Georgia');
+        }else if($('#preview-font').css('font-family')=== 'Georgia'){
+            $('#preview-font').css('font-family', 'Times New Roman');
+        }else if($('#preview-font').css('font-family')=== 'Times New Roman'){
+            $('#preview-font').css('font-family', 'Trebuchet MS');
+        }else{
+            $('#preview-font').css('font-family', 'Verdana');
+        }     
+  });
+
+      $("#font-style").on("click", function () {
+          console.log($('#preview-font').css('font-style'));
+        if($('#preview-font').css('font-style') === 'italic'){
+            $('#preview-font').css('font-style', 'normal');
+        }else{
+            $('#preview-font').css('font-style', 'italic');
+        }     
+  });
+
 });
+
 
 $(function(){
   $('#image_picture').change(function(e){
