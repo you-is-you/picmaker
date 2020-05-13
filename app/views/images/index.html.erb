@@ -18,19 +18,48 @@
 <div class="col-xs-8 col-md-8 mx-auto">
             <%= form_for @image, url: '/images/ogp', multipart: true do  |f| %>
 
-                <div class="input-group my-5">
-                    <div class="input-group-prepend">
-                        <%= f.label :text, "コメント", class:"input-group-text" %>
-                    </div>
-                    <%= f.text_area :text, id:"image_text", class: "form-control", placeholder: "入力されたコメントが合成されます" %>
+                <div class="form-group">
+                    <p><b><i class="fa fa-bolt"></i> 背景画像を選択しよう <i class="fa fa-bolt"></i></b><br>
+                    <small class="text-muted">アップロードも可能です</small></p>
+                    <label><%= f.radio_button :kind, "white_paper" %><%= image_tag 'white_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "black_paper" %><%= image_tag 'black_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "water_paper" %><%= image_tag 'water_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "pink_paper" %><%= image_tag 'pink_paper.jpg', width: '90', class: 'lazy' %></label>
+                    
+                    <label><%= f.radio_button :kind, "light_frame" %><%= image_tag 'light_frame.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "brown_frame" %><%= image_tag 'brown_frame.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "dark_frame" %><%= image_tag 'dark_frame.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "gold_frame" %><%= image_tag 'gold_frame.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "border_paper" %><%= image_tag 'border_paper.jpg', width: '90', class: 'lazy' %></label>
+                    
+                    <label><%= f.radio_button :kind, "cork_board_papper" %><%= image_tag 'cork_board_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "light_wood_paper" %><%= image_tag 'light_wood_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "brown_wood_paper" %><%= image_tag 'brown_wood_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "dark_wood_paper" %><%= image_tag 'dark_wood_paper.jpg', width: '90', class: 'lazy' %></label>
+
+                    <label><%= f.radio_button :kind, "water_wafu_paper" %><%= image_tag 'water_wafu_paper.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "gold_wafu_paper" %><%= image_tag 'gold_wafu_paper.jpg', width: '90', class: 'lazy' %></label>
+                    
+                    <label><%= f.radio_button :kind, "collage_notebook" %><%= image_tag 'collage_notebook.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "side_sketchbook" %><%= image_tag 'side_sketchbook.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "spread_sketchbook" %><%= image_tag 'spread_sketchbook.jpg', width: '90', class: 'lazy' %></label>
+                    <label><%= f.radio_button :kind, "vertical_sketchbook" %><%= image_tag 'vertical_sketchbook.jpg', width: '90', class: 'lazy' %></label>
                 </div>
-                
-                <div class="input-group my-5 text-left">
+
+                <div class="input-group my-3 text-left">
                     <div class="custom-file">
                         <%= f.label :picture, "選んだ画像を合成します", class: "custom-file-label" %>
                         <%= f.file_field :picture, id:"image_picture", class: "custom-file-input", lang:"ja" %>
                     </div>
                 </div>
+
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <%= f.label :text, "コメント", class:"input-group-text" %>
+                    </div>
+                    <%= f.text_area :text, id:"image_text", class: "form-control", placeholder: "入力されたコメントが合成されます" %>
+                </div>
+
             <% end %>
 </div>
 </div>

@@ -19,7 +19,7 @@ class ImagesController < ApplicationController
             redirect_to session[:oauth_url]
         rescue => e
             p error = e
-            redirect_to root_path, flash[:message] => "エラーが発生しました"
+            redirect_to root_path
         end
     end
 

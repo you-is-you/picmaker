@@ -7,7 +7,7 @@ $(function(){
 
 $(function(){
   $("#save-button").on("click", function () {
-
+try {
       // 処理前に Loading 画像を表示
       dispLoading('画像作成中です。しばしお待ちください。');
     html2canvas($('#screenshot-target').get(0)).then( function (canvas) {
@@ -57,6 +57,9 @@ $(function(){
             });
         }
     });
+    } catch( e ) {
+        console.log(e);
+    }
   });
 });
 
@@ -165,6 +168,76 @@ $(function(){
 
 });
 
+$(function(){
+  $('input[name="image[kind]"]:radio').change( function(){
+    try {
+    var kind = this.value;
+    switch(kind){
+      case 'white_paper':
+        dataUrl = 'assets/white_paper.jpg';
+        break;
+      case 'black_paper':
+        dataUrl = 'assets/black_paper.jpg';
+        break;
+      case 'water_paper':
+        dataUrl = 'assets/water_paper.jpg';
+        break;
+      case 'pink_paper':
+        dataUrl = 'assets/pink_paper.jpg';
+        break;
+      case 'light_frame':
+        dataUrl = 'assets/light_frame.jpg';
+        break;
+      case 'brown_frame':
+        dataUrl = 'assets/brown_frame.jpg';
+        break;
+      case 'dark_frame':
+        dataUrl = 'assets/dark_frame.jpg';
+        break;
+      case 'gold_frame':
+        dataUrl = 'assets/gold_frame.jpg';
+        break;
+      case 'border_paper':
+        dataUrl = 'assets/border_paper.jpg';
+        break;
+      case 'cork_board_papper':
+        dataUrl = 'assets/cork_board_papper.jpg';
+        break;
+      case 'light_wood_paper':
+        dataUrl = 'assets/light_wood_paper.jpg';
+        break;
+      case 'brown_wood_paper':
+        dataUrl = 'assets/brown_wood_paper.jpg';
+        break;
+      case 'dark_wood_paper':
+        dataUrl = 'assets/dark_wood_paper.jpg';
+        break;
+      case 'water_wafu_paper':
+        dataUrl = 'assets/water_wafu_paper.jpg';
+        break;
+      case 'gold_wafu_paper':
+        dataUrl = 'assets/gold_wafu_paper.jpg';
+        break;
+      case 'collage_notebook':
+        dataUrl = "assets/collage_notebook.jpg";
+        break;
+      case 'side_sketchbook':
+        dataUrl = 'assets/side_sketchbook.jpg';
+        break;
+      case 'spread_sketchbook':
+        dataUrl = 'assets/spread_sketchbook.jpg';
+        break;
+      case 'vertical_sketchbook':
+        dataUrl = 'assets/vertical_sketchbook.jpg';
+        break;
+    }
+    $("#img1").attr('src',dataUrl);
+    } catch( e ) {
+        console.log(e);
+    }
+  });
+});
+
 
 $(function(){
   $('#image_picture').change(function(e){
@@ -185,6 +258,11 @@ $(function(){
     })(file);
     reader.readAsDataURL(file);
   });
+});
+
+// 遅延ロード(トップページのサムネイル画像に適用)
+$(function(){
+  $("img.lazy").lazyload();
 });
 
 /* ------------------------------
