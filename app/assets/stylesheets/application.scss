@@ -9,6 +9,14 @@
   content: "アップロード";
 }
 
+@font-face {
+     font-family: 'font_woff';
+     font-style: normal;
+     font-weight: 400;
+     src: url('./fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2') format('woff2');
+     font-display: swap;
+ }
+
 @media (max-width: 576px) {
   #screenshot-target {
     width: 100%;
@@ -39,7 +47,6 @@
   transform: translate(-50%,-50%);
   font-size: 25px;
   color:black;
-
 }
 
 button{
@@ -168,4 +175,20 @@ button{
   .top {
     width: 768px;
   }
+}
+
+// test
+@for $i from 1 through 10 {
+    #list#{$i}_num_first {
+        width:80px;
+    }
+    #list#{$i}_num_last {
+        width:80px;
+    }
+    #list#{$i}_repeatvalue {
+        width:80px;
+    }
+    #list#{$i}_repeatnum {
+        width:80px;
+    }
 }

@@ -1,6 +1,5 @@
 class ImagesController < ApplicationController
     require "twitter"
-    require 'omniauth'
     require 'base64'
     require 'tempfile'
     require "os"
@@ -10,6 +9,10 @@ class ImagesController < ApplicationController
 
     def index
         @image = Image.new
+    end
+
+    def check
+        
     end
 
     def tweet
@@ -55,8 +58,8 @@ class ImagesController < ApplicationController
     def set_twitter_client
         begin
             @twitter = Twitter::REST::Client.new do |config|
-            config.consumer_key        = ENV["CONSUMER_KEY"]
-            config.consumer_secret     = ENV["CONSUMER_SECRET"]
+            config.consumer_key        = Rails.application.secrets.twitter_api_key
+            config.consumer_secret     = Rails.application.secrets.twitter_api_secret
             config.access_token = session[:oauth_token]
             config.access_token_secret = session[:oauth_token_secret]
             end

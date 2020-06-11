@@ -1,0 +1,13 @@
+<%= form_with(url: test, local: true,  method: :get) do |form| %>
+    <div class="bg-warning p-3 my-3 rounded">
+        <div class="bg-white border border-dark">
+            <div class="col-xs-4 col-md-8 mx-auto  mx-auto my-5">
+            <div><%= form.label :user_name, "診断したい名前を入れてください", class:"control-label" %></div>
+                <div class="col">
+                    <%= form.text_field :user_name, value:"名無し", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" %>
+                    <%= form.submit '診断する', :class => 'btn btn-primary btn-lg' %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

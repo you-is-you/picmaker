@@ -6,12 +6,12 @@ ruby '>= 2.5'
 #もとからあったもの
 gem 'rails', '~> 5.2.3'
 gem 'turbolinks', '~> 5'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'sqlite3'
 
 #エラー報告
 gem "google-cloud-error_reporting"
-
-#画像合成
-gem "mini_magick"
 
 #デザイン
 gem "jquery-rails"
@@ -29,8 +29,9 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 gem 'google-analytics-rails'
 
-#変数管理
-gem 'dotenv-rails'
+#ストレージとDB
+gem "google-cloud-firestore"
+gem "google-cloud-storage", "~> 1.10"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

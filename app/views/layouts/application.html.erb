@@ -5,29 +5,25 @@
         <%= display_meta_tags(default_meta_tags) %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="無料で使える画像合成アプリのひとことメーカーで好きな画像にコメントをつけて、twitterなどのSNSでシェアしよう。">
-        
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', defer:"true" %>
-        <%= javascript_include_tag 'application','data-turbolinks-track': 'reload', defer:"true" %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', defer: 'defer' %>
+        <%= javascript_include_tag 'application','data-turbolinks-track': 'reload', defer: 'defer' %>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9" defer></script> 
-
         <%= favicon_link_tag('favicon.ico') %>
-
         <%= csrf_meta_tags %>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165819452-1"></script>
-        <script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-165819452-1"></script>
+        <script defer>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-165819452-1');
         </script>
-
+        <script data-ad-client="ca-pub-5952411584833384" defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js" defer></script>
     </head>
-
-  <body>
-    <%= render 'layouts/header' %>
+    <body>
+        <%= render 'layouts/header' %>
         <%= yield %>
-    <%= render 'layouts/footer' %>
-  </body>
+        <%= render 'layouts/footer' %>
+    </body>
 </html>

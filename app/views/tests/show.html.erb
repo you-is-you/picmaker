@@ -1,0 +1,53 @@
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-md-8 mx-auto mt-5">
+                    <div class="">
+                        <%= link_to @test, class:"font-weight-bold text-dark text-decoration-none" do %>
+                            <h1><%= @test.title %></h1>
+                        <% end %>
+                    </div> 
+                        <% if @test.title_img.present? %>
+                        <div class="embed-responsive embed-responsive-16by9 col-xs-6 col-md-6 mx-auto">
+                            <%= simple_format(@test.title_img, {}, wrapper_tag: "div", sanitize: false) %>
+                        </div>
+                        <% end %>
+                    <div class="my-3" style="text-align: center;word-break: break-all;">
+                        <%= simple_format(@test.description, {}, wrapper_tag: "div", sanitize: false) %>
+                    </div>
+                    <div class="bg-light py-1">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><%= @test.author %></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme0}" ,"/tests/list?search=#{@theme0}" %></span>
+                                        <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme1}" ,"/tests/list?search=#{@theme1}" %></span>
+                                        <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme2}" ,"/tests/list?search=#{@theme2}" %></span>
+                                        <% if @test.daily_change == "1" %>
+                                            <span class="border bg-white"><i class="fa fa-calendar" aria-hidden="true"></i><%= @daily_change %></span>
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>  
+                    <% if params[:user_name].nil? %>
+                        <%= render 'name', test: @test %>
+                    <% else %>
+                        <%= render 'result', test: @test %>
+                    <% end %>
+                </div>
+                <%= render 'ranking', test: @test %>
+                <div class="border mx-auto mb-5 col-xs-4 col-md-7">
+                    <%= link_to new_test_path, class:"btn btn-lg btn-primary m-3" do %>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                    <% end %>
+                    <div class="d-inline-block h5">あなたのオリジナル診断をつくろう！</div>
+                </div>             
+            </div>
+        </div>
+    </div>
+</div>

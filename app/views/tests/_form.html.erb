@@ -1,0 +1,1597 @@
+<%= form_with(model: test, local: true) do |form| %>
+
+    <div class="alert alert-dark my-5"><i class="fa fa-info-circle" aria-hidden="true"></i>基本データ<i class="fa fa-info-circle" aria-hidden="true"></i></div>
+
+    <div class="form-group">
+        <%= form.label :author, "作者", class:"control-label" %>
+        <%= form.text_field :author, class:"form-control d-inline-block" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :title, "タイトル", class:"control-label required" %>
+        <%= form.text_field :title, class:"form-control d-inline-block", placeholder:"診断タイトル" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :title_img, "タイトル用動画か画像", class:"control-label required" %>
+        <%= form.text_field :title_img, class:"form-control d-inline-block  ", placeholder:"ここに画像や動画のリンクを貼ると、タイトルに画像や動画を付けられます" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :title_img_option, "タイトル用動画か画像のオプション", class:"control-label " %>
+        <%= form.select :title_img_option, [['動画も画像も無用', 0], ['画像もしくはGIFをつける', 1], ['動画をつける', 2]], class:"form-control d-inline-block" %>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#title_img_option" aria-expanded="false" aria-controls="title_img_option">
+        説明
+    </button>
+
+    <div class="collapse alert alert-info" id="title_img_option">説明文について
+        <ol class="list-unstyled">
+            <li>第三者の著作権、プライバシー権その他の権利を侵害しないよう留意してください</li>
+        </ol>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :description, "説明文", class:"control-label required" %>
+        <%= form.text_area :description, class:"form-control d-inline-block  ", placeholder:"説明文" %>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="description">
+        説明
+    </button>
+
+    <div class="collapse alert alert-info" id="description">説明文について
+        <ol class="list-unstyled">
+            <li>診断の内容を説明する項目です。</li>
+        </ol>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :basic_text, "診断結果", class:"control-label" %>
+        <%= form.text_area :basic_text, id:"basic_text", class:"form-control d-inline-block", placeholder:"[USER]さんは[LIST1]です" %>
+    </div>
+
+    <div class="bg-light mb-4">
+        <table class="w-100 mb-2">
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick='clear_list("#basic_text")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+                    </td>
+                </tr>  
+            </tbody>
+        </table>
+        <div>
+            <button class="btn btn-default" type="button" onclick='insert("#basic_text","[USER]")'>USER</button>    
+            <div>
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#basic_text","[LIST1]")'>[LIST1]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#basic_text","[LIST2]")'>[LIST2]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#basic_text","[LIST3]")'>[LIST3]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#basic_text","[LIST4]")'>[LIST4]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#basic_text","[LIST5]")'>[LIST5]</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#basic_text","[LIST6]")'>[LIST6]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#basic_text","[LIST7]")'>[LIST7]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#basic_text","[LIST8]")'>[LIST8]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#basic_text","[LIST9]")'>[LIST9]</button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#basic_text","[LIST10]")'>[LIST10]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#basic_text" aria-expanded="false" aria-controls="basic_text">
+    説明
+    </button>
+
+    <div class="collapse alert alert-info" id="basic_text">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            診断結果基本テキストについて
+                        </button>
+                    </h5>
+                </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="card-body">
+    <ul>
+    <li>
+    この項目は、診断をした際に「診断結果」として表示される文章のベースとなる部分です。この中に[USER]や[LIST1]といった変数を入れることで、診断結果の内容が変化することになります。
+    </li>
+    <li>この項目の中で改行をすると、診断結果でも改行して表示されます。</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="card">
+    <div class="card-header" id="headingTwo">
+    <h5 class="mb-0">
+    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+    変数[USER]について
+    </button>
+    </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div class="card-body">
+    <ul>
+    <li>
+    [USER]をこの項目の中に設定すると、診断ページで実際に診断をする際に、ユーザーが入力した名前に変換されます。
+    </li>
+    </ul>
+
+    </div>
+    </div>
+    </div>
+    <div class="card">
+    <div class="card-header" id="headingThree">
+    <h5 class="mb-0">
+    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+    変数[LIST1]-[LIST10]について
+    </button>
+    </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div class="card-body">
+    <ul>
+    <li>
+    [LIST1]-[LIST10]をこの項目の中に挿入すると、ユーザーが入力した名前に応じて下の各リスト1〜リスト10に設定した値のいずれかがランダムに割り当てられます。
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="alert alert-dark">
+        <i class="fa fa-list-ol" aria-hidden="true"></i>リスト<i class="fa fa-list-ol" aria-hidden="true"></i>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :list1, "リスト１[LIST1]", class:"control-label" %>
+        <%= form.text_area :list1, id:"list1", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List1">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list1")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+        <button class="btn btn-default" type="button" onclick='insert("#list1","[USER]")'>USER</button>
+        <!-- <button class="btn btn-default" type="button" onclick='insert("#list1","[BR]")'>[BR](改行)</button>     -->
+    <div>
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list1","[LIST1]")' disabled>[LIST1]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list1","[LIST2]")'>[LIST2]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list1","[LIST3]")'>[LIST3]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list1","[LIST4]")'>[LIST4]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list1","[LIST5]")'>[LIST5]</button>
+        </div>
+    </div>
+    <div>
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list1","[LIST6]")'>[LIST6]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list1","[LIST7]")'>[LIST7]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list1","[LIST8]")'>[LIST8]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list1","[LIST9]")'>[LIST9]</button>
+    </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list1","[LIST10]")'>[LIST10]</button>
+            </ul>
+        </div>
+    </div>
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber1" aria-expanded="false" aria-controls="dropdownSerialNumber1">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber1">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list1_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list1_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list1", "#list1_num_first", "#list1_num_last")'>リスト1に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue1" aria-expanded="false" aria-controls="dropdownRepeatedValue1">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue1">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list1_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list1_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list1", "#list1_repeatvalue", "#list1_repeatnum")'>リスト1に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List1" aria-expanded="false" aria-controls="List1">
+    ツール
+    </button>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List1_explanation" aria-expanded="false" aria-controls="List1_explanation">
+    説明
+    </button>
+
+    <div class="alert alert-info collapse" id="List1_explanation">
+        <div class="accordion" id="accordionList">
+            <div class="card">
+            <div class="card-header" id="headinglist">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapselist" aria-expanded="false" aria-controls="collapselist">
+                        リストについて
+                    </button>
+                </h5>
+            </div>
+
+                <div id="collapselist" class="collapse" aria-labelledby="headinglist" data-parent="#accordionList">
+                    <div class="card-body">
+                        <div class="panel-body">
+                            <ul>
+                                <li>診断をした時に変化する部分です。<br>
+                                各リストに登録した値を診断結果で表示させるには、<b>診断結果基本テキスト</b>上で各リストに対応したリスト変数（リスト1を表示する変数は<span class="variable">[LIST1]</span>）を設定します。
+                                </li>
+                                <li>リストは最大10個（<span class="variable">[LIST10]</span>まで）使用できます。</li>
+                                <li>値は改行で区切ると1つの値となります。1つのリストに最大<b>999個</b>まで登録が出来ます。<br></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+    <%= form.label :list_option1, "リストオプション１", class:"control-label " %>
+    <%= form.select :list_option1, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block" %>
+    </div>
+
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List1_option_explanation" aria-expanded="false" aria-controls="List1_option_explanation">
+    説明
+    </button>
+
+
+    <div class="d-block bg-light">
+        <div class="collapse alert alert-info" id="List1_option_explanation">
+            <div class="accordion" id="accordionListOption">
+                <div class="card">
+                    <div class="card-header" id="headinglistoption">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapselistoption" aria-expanded="true" aria-controls="collapselistoption">
+                                リストオプションについて
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapselistoption" class="collapse show" aria-labelledby="headinglistoption" data-parent="#accordionListOption">
+                        <div class="card-body">
+                            <div class="panel-body">
+                                リストで使用するデータがどのような種類のデータなのかを指定する項目です。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                テキスト
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionListOption">
+                        <div class="card-body">
+                            <div class="panel-body">
+                                リスト内の項目がテキストデータであることを表す項目です。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                画像もしくはGIF
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionListOption">
+                        <div class="card-body">
+                            <div class="panel-body">
+                                リスト内の項目が画像もしくはGIFデータであることを表す項目です。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                動画
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionListOption">
+                        <div class="card-body">
+                            <div class="panel-body">
+                                リスト内の項目が動画であることを表す項目です。<br>
+                                iframe...から始まるコードをコピーして貼り付けると、その動画が表示されるようになります。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST2" aria-expanded="false" aria-controls="LIST2">
+    リスト２を表示
+    </button>
+
+    <div class="collapse" id="LIST2">
+    <div class="form-group">
+    <%= form.label :list2, "リスト２[LIST2]", class:"control-label" %>
+    <%= form.text_area :list2, id:"list2", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List2">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list2")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list2","[USER]")'>USER</button> 
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list2","[BR]")'>[BR](改行)</button>     -->
+    
+    <div>
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list2","[LIST1]")'>[LIST1]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list2","[LIST2]")' disabled>[LIST2]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list2","[LIST3]")'>[LIST3]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list2","[LIST4]")'>[LIST4]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list2","[LIST5]")'>[LIST5]</button>
+        </div>
+    </div>
+
+    <div>
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list2","[LIST6]")'>[LIST6]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list2","[LIST7]")'>[LIST7]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list2","[LIST8]")'>[LIST8]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list2","[LIST9]")'>[LIST9]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list2","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber2" aria-expanded="false" aria-controls="dropdownSerialNumber2">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber2">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list2_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list2_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list2", "#list2_num_first", "#list2_num_last")'>リスト２に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue2" aria-expanded="false" aria-controls="dropdownRepeatedValue2">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue2">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list2_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list2_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list2", "#list2_repeatvalue", "#list2_repeatnum")'>リスト２に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List2" aria-expanded="false" aria-controls="List2">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option2, "リストオプション２", class:"control-label " %>
+    <%= form.select :list_option2, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST3" aria-expanded="false" aria-controls="LIST3">
+    リスト３を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST3">
+    <div class="form-group">
+    <%= form.label :list3, "リスト３[LIST3]", class:"control-label" %>
+    <%= form.text_area :list3, id:"list3", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List3">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list3")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+
+    <div>
+        <button class="btn btn-default" type="button" onclick='insert("#list3","[USER]")'>USER</button>
+        <!-- <button class="btn btn-default" type="button" onclick='insert("#list3","[BR]")'>[BR](改行)</button>     -->
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list3","[LIST1]")'>[LIST1]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list3","[LIST2]")'>[LIST2]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list3","[LIST3]")' disabled>[LIST3]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list3","[LIST4]")'>[LIST4]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list3","[LIST5]")'>[LIST5]</button>
+            </div>
+        </div>
+
+    <div>
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list3","[LIST6]")'>[LIST6]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list3","[LIST7]")'>[LIST7]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list3","[LIST8]")'>[LIST8]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list3","[LIST9]")'>[LIST9]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list3","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber3" aria-expanded="false" aria-controls="dropdownSerialNumber3">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber3">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list3_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list3_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list3", "#list3_num_first", "#list3_num_last")'>リスト３に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue3" aria-expanded="false" aria-controls="dropdownRepeatedValue3">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue3">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list3_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list3_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list3", "#list3_repeatvalue", "#list3_repeatnum")'>リスト３に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List3" aria-expanded="false" aria-controls="List3">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option3, "リストオプション３", class:"control-label " %>
+    <%= form.select :list_option3, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST4" aria-expanded="false" aria-controls="LIST4">
+    リスト４を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST4">
+    <div class="form-group">
+    <%= form.label :list4, "リスト４[LIST4]", class:"control-label" %>
+    <%= form.text_area :list4, id:"list4", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List4">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list4")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list4","[USER]")'>USER</button>
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list4","[BR]")'>[BR](改行)</button>     -->
+    <div>
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list4","[LIST1]")'>[LIST1]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list4","[LIST2]")'>[LIST2]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list4","[LIST3]")'>[LIST3]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list4","[LIST4]")' disabled>[LIST4]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list4","[LIST5]")'>[LIST5]</button>
+        </div>
+    </div>
+    <div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list4","[LIST6]")'>[LIST6]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list4","[LIST7]")'>[LIST7]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list4","[LIST8]")'>[LIST8]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list4","[LIST9]")'>[LIST9]</button>
+    </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list4","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber4" aria-expanded="false" aria-controls="dropdownSerialNumber4">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber4">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list4_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list4_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list4", "#list4_num_first", "#list4_num_last")'>リスト４に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue4" aria-expanded="false" aria-controls="dropdownRepeatedValue4">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue4">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list4_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list4_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list4", "#list4_repeatvalue", "#list4_repeatnum")'>リスト４に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List4" aria-expanded="false" aria-controls="List4">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option4, "リストオプション４", class:"control-label " %>
+    <%= form.select :list_option4, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST5" aria-expanded="false" aria-controls="LIST5">
+    リスト５を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST5">
+    <div class="form-group">
+    <%= form.label :list5, "リスト５[LIST5]", class:"control-label" %>
+    <%= form.text_area :list5, id:"list5", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List5">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list5")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list5","[USER]")'>USER</button>
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list5","[BR]")'>[BR](改行)</button>     -->
+    
+    <div>
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list5","[LIST1]")'>[LIST1]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list5","[LIST2]")'>[LIST2]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list5","[LIST3]")'>[LIST3]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list5","[LIST4]")'>[LIST4]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list5","[LIST5]")' disabled>[LIST5]</button>
+        </div>
+    </div>
+
+    <div>
+        <div class="dropdown d-inline">
+        <button class="dropdown-item" type="button" id="list6_0" onclick='insert("#list5","[LIST6]")'>[LIST6]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="dropdown-item" type="button" id="list7_0" onclick='insert("#list5","[LIST7]")'>[LIST7]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="dropdown-item" type="button" id="list8_0" onclick='insert("#list5","[LIST8]")'>[LIST8]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+        <button class="dropdown-item" type="button" id="list9_0" onclick='insert("#list5","[LIST9]")'>[LIST9]</button>
+        </div>
+
+        <div class="dropdown d-inline">
+            <button class="dropdown-item" type="button" id="list10_0" onclick='insert("#list5","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber5" aria-expanded="false" aria-controls="dropdownSerialNumber5">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber5">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list5_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list5_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list5", "#list5_num_first", "#list5_num_last")'>リスト５に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue5" aria-expanded="false" aria-controls="dropdownRepeatedValue5">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue5">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list5_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list5_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list5", "#list5_repeatvalue", "#list5_repeatnum")'>リスト５に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List5" aria-expanded="false" aria-controls="List5">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option5, "リストオプション５", class:"control-label " %>
+    <%= form.select :list_option5, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST6" aria-expanded="false" aria-controls="LIST6">
+    リスト６を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST6">
+    <div class="form-group">
+    <%= form.label :list6, "リスト６[LIST6]", class:"control-label" %>
+    <%= form.text_area :list6, id:"list6", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List6">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list6")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list6","[USER]")'>USER</button>
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list6","[BR]")'>[BR](改行)</button>     -->
+    
+    <div>
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list6","[LIST1]")'>[LIST1]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list6","[LIST2]")'>[LIST2]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list6","[LIST3]")'>[LIST3]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list6","[LIST4]")'>[LIST4]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list6","[LIST5]")'>[LIST5]</button>
+    </div>
+    </div>
+
+    <div>
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list6","[LIST6]")' disabled>[LIST6]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list6","[LIST7]")'>[LIST7]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list6","[LIST8]")'>[LIST8]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list6","[LIST9]")'>[LIST9]</button>
+    </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list6","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber6" aria-expanded="false" aria-controls="dropdownSerialNumber6">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber6">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list6_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list6_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list6", "#list6_num_first", "#list6_num_last")'>リスト６に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue6" aria-expanded="false" aria-controls="dropdownRepeatedValue6">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue6">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list6_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list6_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list6", "#list6_repeatvalue", "#list6_repeatnum")'>リスト６に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List6" aria-expanded="false" aria-controls="List6">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option6, "リストオプション６", class:"control-label " %>
+    <%= form.select :list_option6, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST7" aria-expanded="false" aria-controls="LIST7">
+    リスト７を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST7">
+    <div class="form-group">
+    <%= form.label :list7, "リスト７[LIST7]", class:"control-label" %>
+    <%= form.text_area :list7, id:"list7", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List7">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list7")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list7","[USER]")'>USER</button>
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list7","[BR]")'>[BR](改行)</button>     -->
+    
+    <div>
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list7","[LIST1]")'>[LIST1]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list7","[LIST2]")'>[LIST2]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list7","[LIST3]")'>[LIST3]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list7","[LIST4]")'>[LIST4]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list7","[LIST5]")'>[LIST5]</button>
+    </div>
+    </div>
+
+    <div>
+    <div class="dropdown d-inline">
+    <button class="dropdown-item" type="button" id="list6_0" onclick='insert("#list7","[LIST6]")'>[LIST6]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="dropdown-item" type="button" id="list7_0" onclick='insert("#list7","[LIST7]")' disabled>[LIST7]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="dropdown-item" type="button" id="list8_0" onclick='insert("#list7","[LIST8]")'>[LIST8]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="dropdown-item" type="button" id="list9_0" onclick='insert("#list7","[LIST9]")'>[LIST9]</button>
+    </div>
+
+        <div class="dropdown d-inline">
+        <button class="dropdown-item" type="button" id="list10_0" onclick='insert("#list7","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber7" aria-expanded="false" aria-controls="dropdownSerialNumber7">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber7">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list7_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list7_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list7", "#list7_num_first", "#list7_num_last")'>リスト７に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue7" aria-expanded="false" aria-controls="dropdownRepeatedValue7">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue7">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list7_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list7_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list7", "#list7_repeatvalue", "#list7_repeatnum")'>リスト７に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List7" aria-expanded="false" aria-controls="List7">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option7, "リストオプション７", class:"control-label " %>
+    <%= form.select :list_option7, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST8" aria-expanded="false" aria-controls="LIST8">
+    リスト８を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST8">
+    <div class="form-group">
+    <%= form.label :list8, "リスト８[LIST8]", class:"control-label" %>
+    <%= form.text_area :list8, id:"list8", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="collapse" id="List8">
+    <div class="bg-light mb-4">
+    <table class="w-100 mb-2">
+    <tbody><tr>
+    <td>
+    <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+    </td>
+    <td>
+    <button class="btn btn-default" type="button" onclick='clear_list("#list8")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+    </td>
+    </tr>  
+    </tbody></table>
+    <div>
+    <button class="btn btn-default" type="button" onclick='insert("#list8","[USER]")'>USER</button>
+    <!-- <button class="btn btn-default" type="button" onclick='insert("#list8","[BR]")'>[BR](改行)</button>     -->
+    
+    <div>
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list8","[LIST1]")'>[LIST1]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list8","[LIST2]")'>[LIST2]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list8","[LIST3]")'>[LIST3]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list8","[LIST4]")'>[LIST4]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list8","[LIST5]")'>[LIST5]</button>
+    </div>
+    </div>
+
+    <div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list8","[LIST6]")'>[LIST6]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list8","[LIST7]")'>[LIST7]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list8","[LIST8]")' disabled>[LIST8]</button>
+    </div>
+
+    <div class="dropdown d-inline">
+    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list8","[LIST9]")'>[LIST9]</button>
+    </div>
+
+        <div class="dropdown d-inline">
+            <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list8","[LIST10]")'>[LIST10]</button>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber8" aria-expanded="false" aria-controls="dropdownSerialNumber8">
+                数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownSerialNumber8">
+                    <div>数値（連番）</div>
+                    <div>最大999個まで連番の数値を挿入できます。</div>
+                    <div>
+                        <input id="list8_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                        <input id="list8_num_last" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list8", "#list8_num_first", "#list8_num_last")'>リスト８に挿入</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue8" aria-expanded="false" aria-controls="dropdownRepeatedValue8">
+                テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse border" id="dropdownRepeatedValue8">
+                    <div>テキスト一括挿入</div>
+                    <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                    <div>
+                        <input id="list8_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                        <input id="list8_repeatnum" type="number" class="input-sm" placeholder="数値">
+                        <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list8", "#list8_repeatvalue", "#list8_repeatnum")'>リスト８に挿入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List8" aria-expanded="false" aria-controls="List8">
+    ツール
+    </button>
+
+    <div class="form-group">
+    <%= form.label :list_option8, "リストオプション８", class:"control-label " %>
+    <%= form.select :list_option8, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+    </div>
+    <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST9" aria-expanded="false" aria-controls="LIST9">
+    リスト９を表示
+    </button>
+    </div>
+
+    <div class="collapse" id="LIST9">
+        <div class="form-group">
+            <%= form.label :list9, "リスト９[LIST9]", class:"control-label" %>
+            <%= form.text_area :list9, id:"list9", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+        </div>
+
+    <div class="collapse" id="List9">
+        <div class="bg-light mb-4">
+            <table class="w-100 mb-2"><tbody>
+                <tr>
+                <td>
+                <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+                </td>
+                <td>
+                <button class="btn btn-default" type="button" onclick='clear_list("#list9")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+                </td>
+                </tr>  
+            </tbody></table>
+            <div>
+                <button class="btn btn-default" type="button" onclick='insert("#list9","[USER]")'>USER</button>
+                <!-- <button class="btn btn-default" type="button" onclick='insert("#list9","[BR]")'>[BR](改行)</button>     -->
+                
+                <div>
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list9","[LIST1]")'>[LIST1]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list9","[LIST2]")'>[LIST2]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list9","[LIST3]")'>[LIST3]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list9","[LIST4]")'>[LIST4]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list9","[LIST5]")'>[LIST5]</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list9","[LIST6]")'>[LIST6]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list9","[LIST7]")'>[LIST7]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list9","[LIST8]")'>[LIST8]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list9","[LIST9]")' disabled>[LIST9]</button>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list9","[LIST10]")'>[LIST10]</button>
+                    </div>
+
+                    <div>
+                        <div class="dropdown d-inline">
+                            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber9" aria-expanded="false" aria-controls="dropdownSerialNumber9">
+                            数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </button>
+
+                            <div class="collapse border" id="dropdownSerialNumber9">
+                                <div>数値（連番）</div>
+                                <div>最大999個まで連番の数値を挿入できます。</div>
+                                <div>
+                                    <input id="list9_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                                    <input id="list9_num_last" type="number" class="input-sm" placeholder="数値">
+                                    <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list9", "#list9_num_first", "#list9_num_last")'>リスト９に挿入</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline">
+                            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue9" aria-expanded="false" aria-controls="dropdownRepeatedValue9">
+                            テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </button>
+
+                            <div class="collapse border" id="dropdownRepeatedValue9">
+                                <div>テキスト一括挿入</div>
+                                <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                                <div>
+                                    <input id="list9_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                                    <input id="list9_repeatnum" type="number" class="input-sm" placeholder="数値">
+                                    <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list9", "#list9_repeatvalue", "#list9_repeatnum")'>リスト９に挿入</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List9" aria-expanded="false" aria-controls="List9">
+    ツール
+    </button>
+
+        <div class="form-group">
+            <%= form.label :list_option9, "リストオプション９", class:"control-label " %>
+            <%= form.select :list_option9, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block " %>
+        </div>
+        <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST10" aria-expanded="false" aria-controls="LIST10">
+            リスト１０を表示
+        </button>
+    </div>
+
+    <div class="collapse" id="LIST10">
+        <div class="form-group">
+            <%= form.label :list10, "リスト１０[LIST10]", class:"control-label" %>
+            <%= form.text_area :list10, id:"list10", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+        </div>
+
+    <div class="collapse" id="List10">
+    <div class="bg-light mb-4">
+        <table class="w-100 mb-2"><tbody>
+        <tr>
+        <td>
+        <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+        </td>
+        <td>
+        <button class="btn btn-default" type="button" onclick='clear_list("#list10")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+        </td>
+        </tr>  
+        </tbody></table>
+    <div>
+        <button class="btn btn-default" type="button" onclick='insert("#list10","[USER]")'>USER</button>
+        <!-- <button class="btn btn-default" type="button" onclick='insert("#list10","[BR]")'>[BR](改行)</button>     -->
+        
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list1_0" onclick='insert("#list10","[LIST1]")'>[LIST1]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list2_0" onclick='insert("#list10","[LIST2]")'>[LIST2]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list3_0" onclick='insert("#list10","[LIST3]")'>[LIST3]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list4_0" onclick='insert("#list10","[LIST4]")'>[LIST4]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list5_0" onclick='insert("#list10","[LIST5]")'>[LIST5]</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list6_0" onclick='insert("#list10","[LIST6]")'>[LIST6]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list7_0" onclick='insert("#list10","[LIST7]")'>[LIST7]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list8_0" onclick='insert("#list10","[LIST8]")'>[LIST8]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list9_0" onclick='insert("#list10","[LIST9]")'>[LIST9]</button>
+            </div>
+
+            <div class="dropdown d-inline">
+                <button class="btn btn-default" type="button" id="list10_0" onclick='insert("#list10","[LIST10]")' disabled>[LIST10]</button>
+            </div>
+
+                <div>
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownSerialNumber10" aria-expanded="false" aria-controls="dropdownSerialNumber10">
+                        数値(連番)<i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="collapse border" id="dropdownSerialNumber10">
+                            <div>数値（連番）</div>
+                            <div>最大999個まで連番の数値を挿入できます。</div>
+                            <div>
+                                <input id="list10_num_first" type="number" class="input-sm" placeholder="数値"> ～
+                                <input id="list10_num_last" type="number" class="input-sm" placeholder="数値">
+                                <button type="button" class="btn btn-default btn-light btn-sm border" onclick='serial_number("#list10", "#list10_num_first", "#list10_num_last")'>リスト１０に挿入</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#dropdownRepeatedValue10" aria-expanded="false" aria-controls="dropdownRepeatedValue10">
+                        テキスト一括挿入<i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="collapse border" id="dropdownRepeatedValue10">
+                            <div>テキスト一括挿入</div>
+                            <div>指定したテキストを指定した数だけ一括挿入出来ます。</div>
+                            <div>
+                                <input id="list10_repeatvalue" type="text" class="input-sm" placeholder="テキスト"> ～
+                                <input id="list10_repeatnum" type="number" class="input-sm" placeholder="数値">
+                                <button type="button" class="btn btn-default btn-light btn-sm border" onclick='repeated_value("#list10", "#list10_repeatvalue", "#list10_repeatnum")'>リスト１０に挿入</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#List10" aria-expanded="false" aria-controls="List10">
+    ツール
+    </button>
+
+        <div class="form-group">
+            <%= form.label :list_option10, "リストオプション１０", class:"control-label" %>
+            <%= form.select :list_option10, [['テキスト', 0], ['画像もしくはGIF', 1], ['動画', 2]], class:"form-control d-inline-block" %>
+        </div>
+    </div>
+
+    <div class="alert alert-dark my-5"><i class="fa fa-star" aria-hidden="true"></i>オプション<i class="fa fa-star" aria-hidden="true"></i></div>
+
+    <div class="form-group">
+        <%= form.label :daily_change, "日替わり", class:"control-label " %>
+        <%= form.select :daily_change, [['いいえ', 0], ['はい', 1]], selected: 0, class:"form-control d-inline-block" %>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#daily_change" aria-expanded="false" aria-controls="daily_change">
+        説明
+    </button>
+
+    <div class="collapse alert alert-info" id="daily_change">日替わりについて
+        <ol class="list-unstyled">
+            <li>例えば「今日の運勢」のように「日によって結果を変えたい」場合は「はい」を選んでください。</li>
+        </ol>
+    </div>
+
+
+    <div class="form-group">
+        <%= form.label :theme, "テーマ", class:"control-label" %>
+        <%= form.text_area :theme, id:"theme", class:"form-control d-inline-block" %>
+    </div>
+
+    <div class="bg-light mb-4">
+        <table class="w-100 mb-2">
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="my-2"><i class="fa fa-cog"></i></span> 挿入ツール
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick='clear_list("#theme")'><i class="fa fa-eraser" aria-hidden="true"></i> クリア</button>
+                    </td>
+                </tr>  
+            </tbody>
+        </table>
+
+        <div>
+            <div>
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_1" onclick='theme_insert("#theme","スポーツ")'>
+                        スポーツ
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_2" onclick='theme_insert("#theme","読書")'>
+                        読書
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_3" onclick='theme_insert("#theme","インターネット")'>
+                        インターネット
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_4" onclick='theme_insert("#theme","旅行")'>
+                        旅行
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_5" onclick='theme_insert("#theme","音楽")'>
+                        音楽
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_6" onclick='theme_insert("#theme","料理")'>
+                        料理
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_7" onclick='theme_insert("#theme","ゲーム")'>
+                        ゲーム
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_8" onclick='theme_insert("#theme","アニメ")'>
+                        アニメ
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_9" onclick='theme_insert("#theme","漫画")'>
+                        漫画
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline">
+                    <button class="btn btn-default" type="button" id="theme_10" onclick='theme_insert("#theme","学校")'>
+                        学校
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#theme" aria-expanded="false" aria-controls="theme">
+        説明
+    </button>
+
+    <div class="collapse alert alert-info" id="theme">テーマについて
+        <ul>
+            <li>この診断のテーマを自由に設定出来ます。テーマをつければ、テーマごとに診断の検索ができます。
+                誰でも同じ言葉を利用でき、独占できるものではありません。</li>
+            <li>1つ10文字以内、最大3個まで登録が出来ます。改行で区切って下さい。</li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :hash_tag, "ハッシュタグ", class:"control-label " %>
+        <%= form.text_field :hash_tag, value: "#", class:"form-control d-inline-block", placeholder:"ハッシュタグ" %>
+    </div>
+
+    <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#hash_tag" aria-expanded="false" aria-controls="hash_tag">
+        説明
+    </button>
+
+    <div class="collapse alert alert-info" id="hash_tag">ハッシュタグについて
+        <ul>
+            <li>Twitter用にハッシュタグを設定する事が出来ます。設定するとTwitterのツイート画面に自動挿入されます。</li>
+            <li>先頭に#を付けて、文字列を登録してください。「 _ （アンダースコア）」以外の記号は使用出来ませんのでご注意下さい。</li>
+            <li>また、既にTwitter上で使用されているハッシュタグは登録することが出来ません。</li>
+        </ul>
+    </div>
+
+    <div class="actions p-3 pb-5">
+        <%= form.submit 'つくる', :class => 'btn btn-primary btn-lg' %>
+    </div>
+
+<% end %>

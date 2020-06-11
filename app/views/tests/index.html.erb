@@ -1,0 +1,29 @@
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-5">
+                <div class="bg-warning p-3 mb-5 rounded">
+                    <div class="border pb-5 pt-3 col-xs-4 col-md-8 mx-auto bg-white">
+                        <p class="p-3 h5">
+                            ツイッターなどのSNSでシェアできるおもしろ診断で遊べるサイトです。
+                        </p>
+                        <p class="h5 pb-3">
+                            人気の診断で遊べるだけでなく、オリジナルの診断を作ることもできますので、お気軽にお試しください。
+                        </p>
+
+                        <% if session[:oauth_token].nil? %>
+                            <%= link_to 'twitterでログインする？', images_check_path, class: "btn btn-lg btn-primary mb-3 mr-2 font-weight-bold fa fa-twitter", id:"login" %>
+                            <% else %>
+                                <%= link_to new_test_path, class:"btn btn-lg btn-primary mb-3 mr-2" do %>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                                <% end %>
+                                <div class="d-inline-block h5 col-xs-4">あなたのオリジナル診断をつくろう！</div>
+                        <% end %>
+                    </div>
+                </div>
+                <%= render 'ranking', test: @test %>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,110 +1,106 @@
 <div class="text-center">
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-12">
-
-<div class="mt-5 h5">
-  <p>ひとつのツイートに多くの言葉をいれたいと思ったことはありませんか？</p>
-  <p>ひとことメーカーはあなたの言葉を画像にすることで、１４０文字を越えてツイートすることができるツールです。</p>
-  <p>合成した画像をブログのタイトル画像にしてみたり、twitterなどのSNSに投稿して遊んでください。</p>
-  <p>ひとことメーカーを使ってコラ画像を作ることもできたので、適当な画像を使ってコラ画像を作ってみても良いです。</p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="container">
-<div class="row">
-<div class="col-xs-8 col-md-8 mx-auto">
-            <%= form_for @image, url: '/images/ogp', multipart: true do  |f| %>
-
-                <div class="form-group">
-                    <p><b><i class="fa fa-bolt"></i> 背景画像を選択しよう <i class="fa fa-bolt"></i></b><br>
-                    <small class="text-muted">アップロードも可能です</small></p>
-                    <label><%= f.radio_button :kind, "white_paper" %><%= image_tag 'white_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "black_paper" %><%= image_tag 'black_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "water_paper" %><%= image_tag 'water_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "pink_paper" %><%= image_tag 'pink_paper.jpg', width: '90', class: 'lazy' %></label>
-                    
-                    <label><%= f.radio_button :kind, "light_frame" %><%= image_tag 'light_frame.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "brown_frame" %><%= image_tag 'brown_frame.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "dark_frame" %><%= image_tag 'dark_frame.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "gold_frame" %><%= image_tag 'gold_frame.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "border_paper" %><%= image_tag 'border_paper.jpg', width: '90', class: 'lazy' %></label>
-                    
-                    <label><%= f.radio_button :kind, "cork_board_papper" %><%= image_tag 'cork_board_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "light_wood_paper" %><%= image_tag 'light_wood_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "brown_wood_paper" %><%= image_tag 'brown_wood_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "dark_wood_paper" %><%= image_tag 'dark_wood_paper.jpg', width: '90', class: 'lazy' %></label>
-
-                    <label><%= f.radio_button :kind, "water_wafu_paper" %><%= image_tag 'water_wafu_paper.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "gold_wafu_paper" %><%= image_tag 'gold_wafu_paper.jpg', width: '90', class: 'lazy' %></label>
-                    
-                    <label><%= f.radio_button :kind, "collage_notebook" %><%= image_tag 'collage_notebook.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "side_sketchbook" %><%= image_tag 'side_sketchbook.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "spread_sketchbook" %><%= image_tag 'spread_sketchbook.jpg', width: '90', class: 'lazy' %></label>
-                    <label><%= f.radio_button :kind, "vertical_sketchbook" %><%= image_tag 'vertical_sketchbook.jpg', width: '90', class: 'lazy' %></label>
-                </div>
-
-                <div class="input-group my-3 text-left">
-                    <div class="custom-file">
-                        <%= f.label :picture, "選んだ画像を合成します", class: "custom-file-label" %>
-                        <%= f.file_field :picture, id:"image_picture", class: "custom-file-input", lang:"ja" %>
-                    </div>
-                </div>
-
-                <div class="input-group my-3">
-                    <div class="input-group-prepend">
-                        <%= f.label :text, "コメント", class:"input-group-text" %>
-                    </div>
-                    <%= f.text_area :text, id:"image_text", class: "form-control", placeholder: "入力されたコメントが合成されます" %>
-                </div>
-
-            <% end %>
-</div>
-</div>
-</div>
-
-  <p><b><i class="fa fa-angle-double-right"></i> プレビュー <i class="fa fa-angle-double-left"></i></b>
-
-  <div id="screenshot-target" class="mb-3 d-inline-block position-relative">
-    <img src="" id="img1" class="h-100 w-100" alt=""/>
-    <p id="preview-font" class="position-absolute ml-0 pl-0"></p>
-  </div> 
-
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-  <button id="left" class="up share_btn mx-3"><i class="fa fa-arrow-left"></i></button>
-<button id="down" class="up share_btn mx-3"><i class="fa fa-arrow-down"></i></button>
-<button id="up" class="up share_btn mx-3"><i class="fa fa-arrow-up"></i></button>
-<button id="right" class="up share_btn mx-3"><i class="fa fa-arrow-right"></i></button>
-</div>
-</div>
-</div>
-
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 mt-4">
-<button id="word-bigger" class="font-color share_btn mx-3"><i class="fa fa-search-plus"></i></button>
-<button id="word-smaller" class="font-color share_btn mx-3"><i class="fa fa-search-minus"></i></button>
-<button id="font-bolder" class="font-color share_btn mx-3"><i class="fa fa-bold" aria-hidden="true"></i></button>
-<button id="font-color" class="font-color share_btn mx-3"><i class="fa fa-tint"></i></button>
-</div>
-</div>
-</div>
-
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 mb-5 mt-4">           
-            <button id="twitter" class="size share_btn mx-3"><i class="fa fa-twitter-square" aria-hidden="true"></i></button>
-            <button id="font-rotate" class="size share_btn mx-3"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-            <button id="font-family" class="size share_btn mx-3"><i class="fa fa-font" aria-hidden="true"></i></button>
-            <button id="font-style" class="size share_btn mx-3"><i class="fa fa-italic" aria-hidden="true"></i></button>
+            <div class="col-xs-12 col-md-12 mt-5">
+                <p>ひとつのツイートに多くの言葉をいれたいと思ったことはありませんか？</p>
+                <p>ひとことメーカーはあなたの言葉を画像にすることで、１４０文字を越えてツイートすることができるツールです。</p>
+                <p>合成した画像をブログのタイトル画像にしてみたり、twitterなどのSNSに投稿して遊んでください。</p>
+                <p>ひとことメーカーを使ってコラ画像を作ることもできたので、適当な画像を使ってコラ画像を作ってみても良いです。</p>
             </div>
         </div>
     </div>
-
-
-<button id="save-button" class="square_btn mb-5"><i class="fa fa-check"></i> 画像を確認する</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-md-8 mx-auto">
+                <%= form_for @image, url: '/images/ogp', multipart: true do  |f| %>
+                    <div class="form-group" id="img-list">
+                        <p><b><i class="fa fa-bolt"></i> 背景画像を選択しよう <i class="fa fa-bolt"></i></b><br>
+                        <small class="text-muted">アップロードも可能です</small></p>
+                        <label><%= f.radio_button :kind, "white_paper" %><%= image_tag 'small_white_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "black_paper" %><%= image_tag 'small_black_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "water_paper" %><%= image_tag 'small_water_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "pink_paper" %><%= image_tag 'small_pink_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "light_frame" %><%= image_tag 'small_light_frame.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "brown_frame" %><%= image_tag 'small_brown_frame.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "dark_frame" %><%= image_tag 'small_dark_frame.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "gold_frame" %><%= image_tag 'small_gold_frame.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "border_paper" %><%= image_tag 'small_border_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "cork_board_papper" %><%= image_tag 'small_cork_board_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "light_wood_paper" %><%= image_tag 'small_light_wood_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "brown_wood_paper" %><%= image_tag 'small_brown_wood_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "dark_wood_paper" %><%= image_tag 'small_dark_wood_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "water_wafu_paper" %><%= image_tag 'small_water_wafu_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "gold_wafu_paper" %><%= image_tag 'small_gold_wafu_paper.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "collage_notebook" %><%= image_tag 'small_collage_notebook.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "side_sketchbook" %><%= image_tag 'small_side_sketchbook.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "spread_sketchbook" %><%= image_tag 'small_spread_sketchbook.jpg',  class: 'lazy' %></label>
+                        <label><%= f.radio_button :kind, "vertical_sketchbook" %><%= image_tag 'small_vertical_sketchbook.jpg',  class: 'lazy' %></label>
+                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a id="prev" class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a id="next" class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="input-group my-3 text-left">
+                        <div class="custom-file">
+                            <%= f.label :picture, "アップロードはここ", class: "custom-file-label" %>
+                            <%= f.file_field :picture, id:"image_picture", class: "custom-file-input", lang:"ja" %>
+                        </div>
+                        <div class="input-group-append">
+                            <button id="delete" type="button" class="btn btn-outline-secondary reset">取消</button>
+                        </div>                
+                    </div>
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <%= f.label :text, "コメント", class:"input-group-text" %>
+                        </div>
+                    <%= f.text_area :text, id:"image_text", class: "form-control", placeholder: "入力されたコメントが合成されます" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <p><b><i class="fa fa-angle-double-right"></i> プレビュー <i class="fa fa-angle-double-left"></i></b>
+    <div id="screenshot-target" class="mb-3 d-inline-block position-relative">
+        <img src="" id="img1" class="h-100 w-100" alt=""/>
+        <p id="preview-font" class="position-absolute ml-0 pl-0"></p>
+    </div> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <button id="left" class="up share_btn mx-3"><i class="fa fa-arrow-left"></i></button>
+                <button id="down" class="up share_btn mx-3"><i class="fa fa-arrow-down"></i></button>
+                <button id="up" class="up share_btn mx-3"><i class="fa fa-arrow-up"></i></button>
+                <button id="right" class="up share_btn mx-3"><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-4">
+                <button id="word-bigger" class="font-color share_btn mx-3"><i class="fa fa-search-plus"></i></button>
+                <button id="word-smaller" class="font-color share_btn mx-3"><i class="fa fa-search-minus"></i></button>
+                <button id="font-bolder" class="font-color share_btn mx-3"><i class="fa fa-bold" aria-hidden="true"></i></button>
+                <button id="font-color" class="font-color share_btn mx-3"><i class="fa fa-tint"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mb-5 mt-4">           
+                <button id="twitter" class="size share_btn mx-3"><i class="fa fa-twitter-square" aria-hidden="true"></i></button>
+                <button id="font-rotate" class="size share_btn mx-3"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+                <button id="font-family" class="size share_btn mx-3"><i class="fa fa-font" aria-hidden="true"></i></button>
+                <button id="font-style" class="size share_btn mx-3"><i class="fa fa-italic" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <button id="save-button" class="square_btn mb-5"><i class="fa fa-check"></i> 画像を確認する</button>
 </div>

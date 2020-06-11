@@ -1,0 +1,68 @@
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-5">
+                <div class="mb-5 col-xs-4 col-md-8 mx-auto">
+                    <div class="bg-warning p-3 my-3 rounded">
+                        <%= link_to "スポーツ" ,'/tests/list?search=スポーツ', class:"btn btn-light btn-sm" %>
+                        <%= link_to "読書", '/tests/list?search=読書', class:"btn btn-light btn-sm" %>
+                        <%= link_to "インターネット", '/tests/list?search=インターネット', class:"btn btn-light btn-sm" %>
+                        <%= link_to "旅行", '/tests/list?search=旅行', class:"btn btn-light btn-sm" %>
+                        <%= link_to "音楽", '/tests/list?search=音楽', class:"btn btn-light btn-sm" %>
+                        <%= link_to "料理", '/tests/list?search=料理', class:"btn btn-light btn-sm" %>
+                        <%= link_to "ゲーム", '/tests/list?search=ゲーム', class:"btn btn-light btn-sm" %>
+                        <%= link_to "アニメ", '/tests/list?search=アニメ', class:"btn btn-light btn-sm" %>
+                        <%= link_to "漫画", '/tests/list?search=漫画', class:"btn btn-light btn-sm" %>
+                        <%= link_to "学校", '/tests/list?search=学校', class:"btn btn-light btn-sm" %>
+                    </div>
+
+                    <%= form_with(url: '/tests/list', local: true, method: :get) do |form| %>
+                        <div class="bg-warning p-3 my-3 rounded">
+                            <div class="bg-white border border-dark">
+                                <div class="col-xs-4 col-md-8 mx-auto my-5">
+                                <div><%= form.label :search, "検索したいテーマを入力してください。", class:"control-label" %></div>
+                                    <div class="col">
+                                        <%= form.text_field :search, placeholder:"診断検索", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" %>
+                                        <%= form.submit '検索', :class => 'btn btn-light btn-sm' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <div class="bg-light p-3"><i class="fa fa-file-o" aria-hidden="true"></i>新着診断</div>
+                        <% @tests.each do |test| %>
+                            <div class="bg-warning p-1 mb-3 rounded">
+                                <ul class="list-group">
+                                    <%= link_to test, class:"font-weight-bold" do %>
+                                        <% if test.title_img.present? %>
+                                            <% if test.title_img_option == '1' %>
+                                            <%    img_file = "<img src=" + "#{test.title_img}" + ' alt="タイトル画像">' %>
+                                            <%    test.title_img = img_file %>
+                                            <% elsif test.title_img_option == '2' %>
+                                            <%    movie_file = "<iframe class=" + "embed-responsive-item" +  %>
+                                            <%    " src=" + "https://www.youtube.com/embed/" +  "#{test.title_img[32..42]}" + " frameborder=" + "0" + %>
+                                            <%    " allow=" + "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" + " allowfullscreen></iframe>" %>
+                                            <%    test.title_img = movie_file %>
+                                            <% end %>
+
+                                            <li class="list-group-item">
+                                                <%= simple_format(test.title_img, {}, wrapper_tag: "div", sanitize: false, class:"w-50 h-50") %>
+                                            </li>
+                                        <% end %>
+                                        <li class="list-group-item">
+                                        <%= test.title %>                                      
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="text-muted"><%= test.description %></span>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
