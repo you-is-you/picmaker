@@ -6,6 +6,8 @@ Rails.application.routes.draw do
        end
     end
 
+    root 'mains#index'
+
     get 'tests/list'
 
     get '/tests/:id/:user_name'  => 'tests#show'
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
     get 'images/privacy_policy'
     get 'images/index'
     get 'images/check'
-    root 'images#index'
+    get 'images/index'
 
     #twitterログイン
     get "/auth/:provider/callback" => "images#login" 
