@@ -1,3 +1,4 @@
+<% description @test.title %>
 <div class="text-center">
     <div class="container">
         <div class="row">
@@ -19,7 +20,16 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><%= @test.author %></td>
+                                    <td>
+                                    <%= link_to "/tests/list?search=#{@test.author}" do %>
+                                    <%= image_tag "#{@test.author_image}", class:"img-fluid rounded-circle" %>
+                                    <% end %>
+                                    </td>
+                                    <td class="font-weight-bold">
+                                    <%= link_to "/tests/list?search=#{@test.author}" do %>
+                                    <%= @test.author %>
+                                    <% end %>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3">
@@ -27,7 +37,7 @@
                                         <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme1}" ,"/tests/list?search=#{@theme1}" %></span>
                                         <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme2}" ,"/tests/list?search=#{@theme2}" %></span>
                                         <% if @test.daily_change == "1" %>
-                                            <span class="border bg-white"><i class="fa fa-calendar" aria-hidden="true"></i><%= @daily_change %></span>
+                                            <span class="border bg-white"><i class="fa fa-calendar" aria-hidden="true"></i><%= link_to "#{@daily_change}" ,"/tests/list?search=#{@daily_change}" %></span>
                                         <% end %>
                                     </td>
                                 </tr>

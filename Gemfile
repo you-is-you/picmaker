@@ -24,6 +24,9 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+#OGP画像合成
+gem 'mini_magick'
+
 #SEO
 gem 'meta-tags'
 gem 'sitemap_generator'
@@ -32,6 +35,9 @@ gem 'google-analytics-rails'
 #ストレージとDB
 gem "google-cloud-firestore"
 gem "google-cloud-storage", "~> 1.10"
+
+#　多言語化
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

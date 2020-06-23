@@ -3,6 +3,8 @@ module ApplicationHelper
     {
         site: 'こめんとメーカー',
         reverse: true,
+        index: true,
+        follow: true,
         separator: '|',
         og: defalut_og,
         twitter: default_twitter_card,
@@ -10,21 +12,20 @@ module ApplicationHelper
     }
     end
 
-    private
-
     def defalut_og
     {
-        title: :full_title,          # :full_title とすると、サイトに表示される <title> と全く同じものを表示できる
+        title: 'こめんとメーカー',          # :full_title とすると、サイトに表示される <title> と全く同じものを表示できる
         description: :description,   # 上に同じ
         url: request.url,
-        image: 'https://www.commentmaker.net/image_picture.png'
+        image: @twitter_ogp_image
     }
     end
 
     def default_twitter_card
     {
-        card: 'summary_large_image', # または summary
-        site: '@commentmaker'            # twitter ID
+        card: 'summary_large_image',
+        site: '@commentmakernet',           # twitter ID
+        image: @twitter_ogp_image
     }
     end
 end

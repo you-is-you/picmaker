@@ -7,19 +7,16 @@
             <% end %>
         </li>
     </ul>
-     
-        <ul class="navbar-nav form-inline my-2 my-lg-0">
-            <% if session[:oauth_token].nil? %>
+    <ul class="navbar-nav form-inline my-2 my-lg-0">
+        <% if session[:oauth_token].nil? %>
             <li>
                 <%= link_to 'twitterでログインする？', images_check_path, class: "btn btn-primary font-weight-bold fa fa-twitter", id:"login" %>
             </li>    
-                <% else %>
+        <% else %>
+            <%= link_to user_tests_path do %>
             <li>
-
-            </li>
-            <li>
-                <%= link_to "twitterログアウト",auth_signout_path, class: "btn btn-primary font-weight-bold fa fa-twitter", id:"logout" %>
-            </li>
+                <img src="<%= session[:image] %>" class="img-fluid rounded-circle" >
             <% end %>
+        <% end %>
     </ul>
 </nav>

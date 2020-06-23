@@ -1,3 +1,4 @@
+
 class Test
   include ActiveModel::Model
   include ActiveModel::Validations
@@ -7,7 +8,7 @@ class Test
   attr_accessor :id, :title, :author, :description, :title_img, :title_img_option, :basic_text, 
   :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8, :list9, :list10, 
   :list_option1, :list_option2, :list_option3, :list_option4, :list_option5, :list_option6, 
-  :list_option7, :list_option8, :list_option9, :list_option10, 
+  :list_option7, :list_option8, :list_option9, :list_option10, :uid, :author_image,
   :daily_change, :theme, :hash_tag, :published_on, :language, :score
 
     # Return a Google::Cloud::Firestore::Dataset for the configured collection.
@@ -51,17 +52,37 @@ class Test
   end
   
   def self.search_query options = {}
+    p options[:search]
     query = collection.where("theme", "array-contains", "#{options[:search]}")
-    query = query.limit(30)
+    query = query.limit(1)
+    p query
     picmakers = []
     begin
       query.get do |picmaker|
-        picmakers
+        picmakers << Test.from_snapspot(picmaker)
       end
     rescue
     end
+    p picmakers
     picmakers
   end
+
+    def self.user_query options = {}
+        p options[:uid]
+        query = collection.where "uid", "=", "#{options[:uid]}"
+        query = query.limit(30)
+        p query
+        picmakers = []
+        begin
+        query.get do |picmaker|
+            picmakers << Test.from_snapspot(picmaker)
+        end
+        rescue
+        end
+        p picmakers
+        picmakers
+    end
+
   
   def self.requires_pagination last_title
     if last_title
@@ -81,6 +102,13 @@ class Test
     end
     picmaker
   end
+
+    def self.upload_ogp_storage options = {}
+        require "google/cloud/storage"
+        storage = Google::Cloud::Storage.new
+        bucket  = storage.bucket "picmaker-ogp-bucket"
+        file = bucket.create_file options[:file_path], "#{options[:storage_name]}.jpg"
+    end
 
   def self.find id
     # [START picmaker_firestore_client_get_picmaker]
@@ -126,6 +154,8 @@ class Test
         hash_tag:    hash_tag,
         language:    language,
         score:       score,
+        uid:         uid,
+        author_image:   author_image,
         published_on: published_on
       self.id = picmaker_ref.document_id
       true
@@ -138,12 +168,40 @@ class Test
     save
   end
 
-  # Set attribute values from provided Hash and save to Firestore.
-  def update attributes
-    attributes.each do |name, value|
-      send "#{name}=", value if respond_to? "#{name}="
-    end
-    save
+  def update
+    picmaker_ref = Test.collection.doc id
+    picmaker_ref.update \
+        title:        title,
+        author:       author,        
+        description:  description,
+        title_img:    title_img,
+        title_img_option:   title_img_option,
+        basic_text:   basic_text,
+        list1:       list1,
+        list2:       list2,
+        list3:       list3,
+        list4:       list4,
+        list5:       list5,
+        list6:       list6,
+        list7:       list7,
+        list8:       list8,
+        list9:       list9,
+        list10:      list10,
+        list_option1:       list_option1,
+        list_option2:       list_option2,
+        list_option3:       list_option3,
+        list_option4:       list_option4,
+        list_option5:       list_option5,
+        list_option6:       list_option6,
+        list_option7:       list_option7,
+        list_option8:       list_option8,
+        list_option9:       list_option9,
+        list_option10:      list_option10,
+        daily_change:    daily_change,
+        theme:    theme,
+        hash_tag:    hash_tag,
+        language:    language,
+        author_image:   author_image
   end
 
   def destroy

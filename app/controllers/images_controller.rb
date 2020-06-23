@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
     require 'base64'
     require 'tempfile'
     require "os"
-    use OmniAuth::Strategies::Developer
+    use OmniAuth::Strategies::Developer 
 
     before_action :set_twitter_client, only: [:tweet]
 
@@ -18,7 +18,7 @@ class ImagesController < ApplicationController
     def tweet
         begin
             @data = base64toimage(params[:picture])   
-            @twitter.update_with_media("#こめんとメーカー https://www.commentmaker.net/",@data)
+            @twitter.update_with_media("#こめんとメーカー　https://www.commentmaker.net/",@data)
             redirect_to session[:oauth_url]
         rescue => e
             p error = e
@@ -29,21 +29,30 @@ class ImagesController < ApplicationController
     def login
         begin
             auth = request.env['omniauth.auth']
+            session[:name] = auth.info.name
+            session[:image] = auth.info.image
+            session[:description] = auth.info.description 
+            session[:uid] = auth.uid
             session[:oauth_token] = auth.credentials.token
             session[:oauth_token_secret] = auth.credentials.secret
             session[:oauth_url] = auth.info.urls.Twitter
-            redirect_to root_path, flash[:message] => "ログイン！"
+            redirect_to root_path
         rescue => e
             p error = e
         end
     end
 
     def logout
+        session[:name] = nil
+        session[:image] = nil
+        session[:description] = nil
+        session[:uid] = nil
         session[:oauth_token] = nil
         session[:oauth_token_secret] = nil
         session[:oauth_url] = nil
-        redirect_to root_path, flash[:message] => "ログアウト！"
+        redirect_to root_path
     end
+
   
   private
 

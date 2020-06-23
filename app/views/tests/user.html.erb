@@ -1,0 +1,60 @@
+<% title '診断一覧' %>
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-5">
+                <div class="bg-warning p-3 my-3 rounded">
+                    <div class="col-xs-4 col-md-8 mx-auto bg-white p-3">
+                        <span class="font-weight-bold">
+                        <%= session[:name] %>
+                        のマイページ
+                        <span>
+                    </div>
+                    <div class="col-xs-4 col-md-8 mx-auto bg-white p-3">
+                    <img src="<%= session[:image] %>" class="img-fluid rounded-circle" >
+                    <%= session[:description] %>
+                    </div>
+
+                </div>
+                <% @tests.each do |test| %>
+                    <div class="bg-warning p-1 mb-3 rounded">
+                        <ul class="list-group">
+                            <%= link_to test, class:"font-weight-bold" do %>
+                            <% if test.title_img.present? %>
+                                <% if test.title_img_option == '1' %>
+                                <%    img_file = "<img src=" + "#{test.title_img}" + ' alt="タイトル画像">' %>
+                                <%    test.title_img = img_file %>
+                                <% elsif test.title_img_option == '2' %>
+                                <%    movie_file = "<iframe class=" + "embed-responsive-item" +  %>
+                                <%    " src=" + "https://www.youtube.com/embed/" +  "#{test.title_img[32..42]}" + " frameborder=" + "0" + %>
+                                <%    " allow=" + "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" + " allowfullscreen></iframe>" %>
+                                <%    test.title_img = movie_file %>
+                                <% end %>
+
+                                <li class="list-group-item">
+                                    <%= simple_format(test.title_img, {}, wrapper_tag: "div", sanitize: false, class:"w-50 h-50") %>
+                                </li>
+                            <% end %>
+                            <li class="list-group-item">
+                            <%= test.title %>                                      
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-muted"><%= test.description %></span>
+                            </li>
+                            <% end %>
+                            <li class="list-group-item">
+                            <%= link_to "編集する", edit_test_path(test), class:"font-weight-bold" %>
+                            <%= link_to "削除する", test_path(test), class:"font-weight-bold", method: :delete %>
+                            </li>
+                        </ul>
+                    </div>
+                <% end %>
+                <div class="bg-warning p-3 my-3 rounded">
+                    <div class="col-xs-4 col-md-8 mx-auto bg-white p-3">
+                        <%= link_to "ログアウト",auth_signout_path, class: "btn btn-primary font-weight-bold fa fa-twitter", id:"logout" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

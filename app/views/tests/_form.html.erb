@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <%= form.label :author, "作者", class:"control-label" %>
-        <%= form.text_field :author, class:"form-control d-inline-block" %>
+        <div class="font-weight-bolder"><%= @nickname %></div>
     </div>
 
     <div class="form-group">
@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <%= form.label :title_img, "タイトル用動画か画像", class:"control-label required" %>
-        <%= form.text_field :title_img, class:"form-control d-inline-block  ", placeholder:"ここに画像や動画のリンクを貼ると、タイトルに画像や動画を付けられます" %>
+        <%= form.text_field :title_img, class:"form-control d-inline-block", placeholder:"ここに画像や動画のリンクを貼ると、タイトルに画像や動画を付けられます" %>
     </div>
 
     <div class="form-group">
@@ -1459,7 +1459,7 @@
 
     <div class="form-group">
         <%= form.label :daily_change, "日替わり", class:"control-label " %>
-        <%= form.select :daily_change, [['いいえ', 0], ['はい', 1]], selected: 0, class:"form-control d-inline-block" %>
+        <%= form.select :daily_change, [['いいえ', 0], ['はい', 1]], class:"form-control d-inline-block" %>
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#daily_change" aria-expanded="false" aria-controls="daily_change">
@@ -1575,7 +1575,7 @@
 
     <div class="form-group">
         <%= form.label :hash_tag, "ハッシュタグ", class:"control-label " %>
-        <%= form.text_field :hash_tag, value: "#", class:"form-control d-inline-block", placeholder:"ハッシュタグ" %>
+        <%= form.text_field :hash_tag, class:"form-control d-inline-block", placeholder:"#ハッシュタグのように入力してね。" %>
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#hash_tag" aria-expanded="false" aria-controls="hash_tag">
