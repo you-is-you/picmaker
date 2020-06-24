@@ -1,5 +1,15 @@
 <%= form_with(model: test, local: true) do |form| %>
 
+    <% if @test.errors.any? %>
+        <div id="error_explanation">
+            <ul class="alert alert-warning">
+            <% @test.errors.full_messages.each do |msg| %>
+            <li class="list-unstyled font-weight-bold"><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     <div class="alert alert-dark my-5"><i class="fa fa-info-circle" aria-hidden="true"></i>基本データ<i class="fa fa-info-circle" aria-hidden="true"></i></div>
 
     <div class="form-group">
@@ -8,12 +18,16 @@
     </div>
 
     <div class="form-group">
-        <%= form.label :title, "タイトル", class:"control-label required" %>
+        <%= form.label :title, "タイトル", class:"control-label" %>
         <%= form.text_field :title, class:"form-control d-inline-block", placeholder:"診断タイトル" %>
     </div>
 
     <div class="form-group">
-        <%= form.label :title_img, "タイトル用動画か画像", class:"control-label required" %>
+        必須項目です。１００文字まで入力できます。
+    </div>
+
+    <div class="form-group">
+        <%= form.label :title_img, "タイトル用動画か画像", class:"control-label" %>
         <%= form.text_field :title_img, class:"form-control d-inline-block", placeholder:"ここに画像や動画のリンクを貼ると、タイトルに画像や動画を付けられます" %>
     </div>
 
@@ -23,33 +37,41 @@
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#title_img_option" aria-expanded="false" aria-controls="title_img_option">
-        説明
+        タイトル用動画か画像についての説明
     </button>
 
     <div class="collapse alert alert-info" id="title_img_option">説明文について
         <ol class="list-unstyled">
-            <li>第三者の著作権、プライバシー権その他の権利を侵害しないよう留意してください</li>
+            <li>作成した診断のタイトル表示に画像や動画を張り付けることができます。なくても問題はないです。</li>
         </ol>
     </div>
 
     <div class="form-group">
-        <%= form.label :description, "説明文", class:"control-label required" %>
+        <%= form.label :description, "説明文", class:"control-label" %>
         <%= form.text_area :description, class:"form-control d-inline-block  ", placeholder:"説明文" %>
     </div>
 
+    <div class="form-group">
+       １００文字まで入力できます。
+    </div>
+
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="description">
-        説明
+        説明文の説明
     </button>
 
     <div class="collapse alert alert-info" id="description">説明文について
         <ol class="list-unstyled">
-            <li>診断の内容を説明する項目です。</li>
+            <li>診断の内容を説明する項目です。診断一覧に表示されるので、説明文をよい感じにすると、人気が出るかもしれません。</li>
         </ol>
     </div>
 
     <div class="form-group">
-        <%= form.label :basic_text, "診断結果", class:"control-label" %>
+        <%= form.label :basic_text, "診断結果として表示されるテキスト", class:"control-label" %>
         <%= form.text_area :basic_text, id:"basic_text", class:"form-control d-inline-block", placeholder:"[USER]さんは[LIST1]です" %>
+    </div>
+
+    <div class="form-group">
+        必須項目です。１００文字まで入力できます。
     </div>
 
     <div class="bg-light mb-4">
@@ -114,7 +136,7 @@
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#basic_text" aria-expanded="false" aria-controls="basic_text">
-    説明
+    診断結果として表示されるテキストの説明
     </button>
 
     <div class="collapse alert alert-info" id="basic_text">
@@ -123,22 +145,21 @@
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            診断結果基本テキストについて
+                            診断結果として表示されるテキストの説明
                         </button>
                     </h5>
                 </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-    <div class="card-body">
-    <ul>
-    <li>
-    この項目は、診断をした際に「診断結果」として表示される文章のベースとなる部分です。この中に[USER]や[LIST1]といった変数を入れることで、診断結果の内容が変化することになります。
-    </li>
-    <li>この項目の中で改行をすると、診断結果でも改行して表示されます。</li>
-    </ul>
-    </div>
-    </div>
-    </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>
+                                この項目は、診断をした際に「診断結果」として表示される文章のベースとなる部分です。この中に[USER]や[LIST1]といった変数を入れることで、診断結果の内容が変化することになります。
+                            </li>
+                            <li>この項目の中で改行をすると、診断結果でも改行して表示されます。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     <div class="card">
     <div class="card-header" id="headingTwo">
     <h5 class="mb-0">
@@ -186,6 +207,10 @@
     <div class="form-group">
         <%= form.label :list1, "リスト１[LIST1]", class:"control-label" %>
         <%= form.text_area :list1, id:"list1", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="form-group">
+        必須項目です。１００文字まで入力できます。
     </div>
 
     <div class="collapse" id="List1">
@@ -297,7 +322,7 @@
             <div class="card-header" id="headinglist">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapselist" aria-expanded="false" aria-controls="collapselist">
-                        リストについて
+                        リストの説明
                     </button>
                 </h5>
             </div>
@@ -309,8 +334,9 @@
                                 <li>診断をした時に変化する部分です。<br>
                                 各リストに登録した値を診断結果で表示させるには、<b>診断結果基本テキスト</b>上で各リストに対応したリスト変数（リスト1を表示する変数は<span class="variable">[LIST1]</span>）を設定します。
                                 </li>
+                                <li>例えば、リスト１に「うさぎ」という文字を入力した場合、診断結果では、[LIST1]がうさぎという文字に置き換えられます。</li>
                                 <li>リストは最大10個（<span class="variable">[LIST10]</span>まで）使用できます。</li>
-                                <li>値は改行で区切ると1つの値となります。1つのリストに最大<b>999個</b>まで登録が出来ます。<br></li>
+                                <li>値は改行で区切ると1つの値となります。1つのリストに最大<b>100個</b>まで登録が出来ます。<br></li>
                             </ul>
                         </div>
                     </div>
@@ -361,7 +387,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionListOption">
                         <div class="card-body">
                             <div class="panel-body">
-                                リスト内の項目がテキストデータであることを表す項目です。
+                                リスト内の項目がテキストデータであることを表す項目です。YoutubeのURLもこの設定ならば、テキストとして出力されます。
                             </div>
                         </div>
                     </div>
@@ -391,17 +417,16 @@
                         </h5>
                     </div>
                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionListOption">
-                        <div class="card-body">
-                            <div class="panel-body">
-                                リスト内の項目が動画であることを表す項目です。<br>
-                                iframe...から始まるコードをコピーして貼り付けると、その動画が表示されるようになります。
+                        <div class="card-b貼り付ける
+                            <div class="panel-b張りつける
+                                リスト内の項目貼りつけるることを表す項目です。<br>
+                                YoutubeのURLをはりつけると、その動画が表示されるようになります。
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#LIST2" aria-expanded="false" aria-controls="LIST2">
     リスト２を表示
@@ -411,6 +436,10 @@
     <div class="form-group">
     <%= form.label :list2, "リスト２[LIST2]", class:"control-label" %>
     <%= form.text_area :list2, id:"list2", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="form-group">
+        １００文字まで入力できます。
     </div>
 
     <div class="collapse" id="List2">
@@ -530,6 +559,10 @@
     <%= form.text_area :list3, id:"list3", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
     </div>
 
+    <div class="form-group">
+        １００文字まで入力できます。
+    </div>
+
     <div class="collapse" id="List3">
     <div class="bg-light mb-4">
     <table class="w-100 mb-2">
@@ -645,6 +678,10 @@
     <div class="form-group">
     <%= form.label :list4, "リスト４[LIST4]", class:"control-label" %>
     <%= form.text_area :list4, id:"list4", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="form-group">
+        １００文字まで入力できます。
     </div>
 
     <div class="collapse" id="List4">
@@ -763,6 +800,10 @@
     <%= form.text_area :list5, id:"list5", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
     </div>
 
+    <div class="form-group">
+        １００文字まで入力できます。
+    </div>
+
     <div class="collapse" id="List5">
     <div class="bg-light mb-4">
     <table class="w-100 mb-2">
@@ -878,6 +919,10 @@
     <div class="form-group">
     <%= form.label :list6, "リスト６[LIST6]", class:"control-label" %>
     <%= form.text_area :list6, id:"list6", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="form-group">
+        １００文字まで入力できます。
     </div>
 
     <div class="collapse" id="List6">
@@ -998,6 +1043,10 @@
     <%= form.text_area :list7, id:"list7", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
     </div>
 
+    <div class="form-group">
+        １００文字まで入力できます。
+    </div>
+
     <div class="collapse" id="List7">
     <div class="bg-light mb-4">
     <table class="w-100 mb-2">
@@ -1113,6 +1162,10 @@
     <div class="form-group">
     <%= form.label :list8, "リスト８[LIST8]", class:"control-label" %>
     <%= form.text_area :list8, id:"list8", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
+    </div>
+
+    <div class="form-group">
+        １００文字まで入力できます。
     </div>
 
     <div class="collapse" id="List8">
@@ -1232,6 +1285,11 @@
             <%= form.text_area :list9, id:"list9", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
         </div>
 
+        <div class="form-group">
+            １００文字まで入力できます。
+        </div>
+
+
     <div class="collapse" id="List9">
         <div class="bg-light mb-4">
             <table class="w-100 mb-2"><tbody>
@@ -1347,6 +1405,10 @@
             <%= form.label :list10, "リスト１０[LIST10]", class:"control-label" %>
             <%= form.text_area :list10, id:"list10", class:"form-control d-inline-block", placeholder:"１つ１つを改行で区切ってください" %>
         </div>
+
+    <div class="form-group">
+        １００文字まで入力できます。
+    </div>
 
     <div class="collapse" id="List10">
     <div class="bg-light mb-4">
@@ -1587,6 +1649,15 @@
             <li>Twitter用にハッシュタグを設定する事が出来ます。設定するとTwitterのツイート画面に自動挿入されます。</li>
             <li>先頭に#を付けて、文字列を登録してください。「 _ （アンダースコア）」以外の記号は使用出来ませんのでご注意下さい。</li>
             <li>また、既にTwitter上で使用されているハッシュタグは登録することが出来ません。</li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        <ul class="list-group">
+            <li class="list-group-item">確認リスト</li>
+            <li class="list-group-item">診断結果の文字数が117文字を超えると、twitterの文字制限にひっかっかるので、シェアできなくなります。</li>
+            <li class="list-group-item">そのため、twitterでシェアしたい場合、「診断結果として表示されるテキストの文字数」と「各リストでランダムに選ばれる単語の文字数」が117文字以内に収まるようにしてください。</li>
+            <li class="list-group-item">後で作った診断は編集できるので、OKぽかったら作ってみるでよいと思います。</li>
         </ul>
     </div>
 

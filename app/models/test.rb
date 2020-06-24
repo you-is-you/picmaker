@@ -3,13 +3,16 @@ class Test
   include ActiveModel::Model
   include ActiveModel::Validations
 
-  validates :title, presence: true
-
   attr_accessor :id, :title, :author, :description, :title_img, :title_img_option, :basic_text, 
   :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8, :list9, :list10, 
   :list_option1, :list_option2, :list_option3, :list_option4, :list_option5, :list_option6, 
   :list_option7, :list_option8, :list_option9, :list_option10, :uid, :author_image,
   :daily_change, :theme, :hash_tag, :published_on, :language, :score
+
+  validates :title, :basic_text, :list1, presence: true
+  validates :title, :description, :basic_text, 
+            :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8, :list9, :list10, 
+            length: { maximum: 100 }
 
     # Return a Google::Cloud::Firestore::Dataset for the configured collection.
   # The collection is used to create, read, update, and delete entity objects.
