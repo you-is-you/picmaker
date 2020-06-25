@@ -14,12 +14,16 @@
                         </p>
 
                         <% if session[:oauth_token].nil? %>
-                            <%= link_to 'twitterでログインする？', images_check_path, class: "btn btn-lg btn-primary mb-3 mr-2 font-weight-bold fa fa-twitter", id:"login" %>
-                            <% else %>
-                                <%= link_to new_test_path, class:"btn btn-lg btn-primary mb-3 mr-2" do %>
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
-                                <% end %>
-                                <div class="d-inline-block h5 col-xs-4">あなたのオリジナル診断をつくろう！</div>
+                            <%= link_to new_test_path, class:"btn btn-lg btn-primary mb-3 mr-2" do %>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                            <% end %>
+                            <div class="d-inline-block h5 col-xs-4">ログインすれば、あなたの名前で診断作れます。</div>
+                            <div class="d-inline-block h5 col-xs-4">ログインしなくても、こめんとメーカーという名前で診断の作成ができます。</div>
+                        <% else %>
+                            <%= link_to new_test_path, class:"btn btn-lg btn-primary mb-3 mr-2" do %>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                            <% end %>
+                            <div class="d-inline-block h5 col-xs-4"><%= session[:name] %>のオリジナル診断をつくろう！</div>
                         <% end %>
                     </div>
                 </div>

@@ -38,6 +38,12 @@ class TestsController < ApplicationController
   # GET /tests/new
   def new
     @test = Test.new
+    if session[:name].present?
+        @nickname = session[:name]
+    else
+        @nickname = "こめんとメーカー"
+    end
+    
   end
 
   # GET /tests/1/edit
@@ -57,7 +63,13 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
     @test.published_on = Time.now 
     @test.language = "ja"
-    @test.author = session[:name]
+
+    if session[:name].present?
+        @test.author = session[:name]
+    else
+        @test.author = "こめんとメーカー"
+    end
+    
     @test.author_image = session[:image]
     @test.uid = session[:uid]
     themes = []

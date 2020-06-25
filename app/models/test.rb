@@ -10,9 +10,7 @@ class Test
   :daily_change, :theme, :hash_tag, :published_on, :language, :score
 
   validates :title, :basic_text, :list1, presence: true
-  validates :title, :description, :basic_text, 
-            :list1, :list2, :list3, :list4, :list5, :list6, :list7, :list8, :list9, :list10, 
-            length: { maximum: 100 }
+  validates :title, :description, length: { maximum: 200 }
 
     # Return a Google::Cloud::Firestore::Dataset for the configured collection.
   # The collection is used to create, read, update, and delete entity objects.
