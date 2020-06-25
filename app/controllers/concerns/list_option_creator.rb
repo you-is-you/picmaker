@@ -20,7 +20,7 @@ class ListOptionCreator
 
                     elsif test.list_option1 == '1'
                         lists.push(test.list1.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[0]}" + ' alt="画像1">'
+                        img_file = "<img src=" + "#{lists[0]}" + ' alt="画像1" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST1]", img_file)
                         @cite_img0 = lists[0]
                         @twitter = @twitter.gsub("[LIST1]", lists[0])
@@ -38,7 +38,7 @@ class ListOptionCreator
                         @twitter = @twitter.gsub("[LIST2]", lists[1])
                     elsif test.list_option2 == '1'
                         lists.push(test.list2.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[1]}" + ' alt="画像2">'
+                        img_file = "<img src=" + "#{lists[1]}" + ' alt="画像2" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST2]", img_file)
                         @cite_img1 = lists[1]
                         @twitter = @twitter.gsub("[LIST2]", lists[1])
@@ -57,7 +57,7 @@ class ListOptionCreator
 
                     elsif test.list_option3 == '1'
                         lists.push(test.list3.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[2]}" + ' alt="画像3">'
+                        img_file = "<img src=" + "#{lists[2]}" + ' alt="画像3" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST3]", img_file)
                         @cite_img2 = lists[2]
                         @twitter = @twitter.gsub("[LIST3]", lists[2])
@@ -77,7 +77,7 @@ class ListOptionCreator
 
                     elsif test.list_option4 == '1'
                         lists.push(test.list3.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[3]}" + ' alt="画像4">'
+                        img_file = "<img src=" + "#{lists[3]}" + ' alt="画像4" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST4]", img_file)
                         @cite_img3 = lists[3]
                         @twitter = @twitter.gsub("[LIST4]", lists[3])
@@ -97,7 +97,7 @@ class ListOptionCreator
 
                     elsif test.list_option5 == '1'
                         lists.push(test.list5.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[4]}" + ' alt="画像5">'
+                        img_file = "<img src=" + "#{lists[4]}" + ' alt="画像5" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST5]", img_file)
                         @cite_img4 = lists[4]
                         @twitter = @twitter.gsub("[LIST5]", lists[4])
@@ -117,7 +117,7 @@ class ListOptionCreator
 
                     elsif test.list_option6 == '1'
                         lists.push(test.list6.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[5]}" + ' alt="画像6">'
+                        img_file = "<img src=" + "#{lists[5]}" + ' alt="画像6" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST6]", img_file)
                         @cite_img5 = lists[5]
                         @twitter = @twitter.gsub("[LIST6]", lists[5])
@@ -137,7 +137,7 @@ class ListOptionCreator
 
                     elsif test.list_option7 == '1'
                         lists.push(test.list7.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[6]}" + ' alt="画像7">'
+                        img_file = "<img src=" + "#{lists[6]}" + ' alt="画像7" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST7]", img_file)
                         @cite_img6 = lists[6]
                         @twitter = @twitter.gsub("[LIST7]", lists[6])
@@ -157,7 +157,7 @@ class ListOptionCreator
 
                     elsif test.list_option8 == '1'
                         lists.push(test.list8.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[7]}" + ' alt="画像8">'
+                        img_file = "<img src=" + "#{lists[7]}" + ' alt="画像8" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST8]", img_file)
                         @cite_img7 = lists[7]
                         @twitter = @twitter.gsub("[LIST8]", lists[7])
@@ -177,7 +177,7 @@ class ListOptionCreator
 
                     elsif test.list_option9 == '1'
                         lists.push(test.list9.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[8]}" + ' alt="画像9">'
+                        img_file = "<img src=" + "#{lists[8]}" + ' alt="画像9" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST9]", img_file)
                         @cite_img8 = lists[8]
                         @twitter = @twitter.gsub("[LIST9]", lists[8])
@@ -197,7 +197,7 @@ class ListOptionCreator
 
                     elsif test.list_option10 == '1'
                         lists.push(test.list10.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[9]}" + ' alt="画像10">'
+                        img_file = "<img src=" + "#{lists[9]}" + ' alt="画像10" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST10]", img_file)
                         @cite_img9 = lists[9]
                         @twitter = @twitter.gsub("[LIST10]", lists[9])
@@ -224,7 +224,7 @@ class ListOptionCreator
                         @twitter = @twitter.gsub("[LIST1]", lists[0])
                     elsif test.list_option1 == '1'
                         lists.push(test.list1.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[0]}" + ' alt="画像1">'
+                        img_file = "<img src=" + "#{lists[0]}" + ' alt="画像1" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST1]", img_file)
                         @cite_img0 = lists[0]
                         @twitter = @twitter.gsub("[LIST1]", lists[0])
@@ -243,7 +243,7 @@ class ListOptionCreator
 
                     elsif test.list_option2 == '1'
                         lists.push(test.list2.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[1]}" + ' class="img-fluid" alt="画像2">'
+                        img_file = "<img src=" + "#{lists[1]}" + ' class="img-fluid" alt="画像2" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST2]", img_file)
                         @cite_img1 = lists[1]
                         @twitter = @twitter.gsub("[LIST2]", lists[1])
@@ -263,7 +263,7 @@ class ListOptionCreator
 
                     elsif test.list_option3 == '1'
                         lists.push(test.list3.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[2]}" + ' alt="画像3">'
+                        img_file = "<img src=" + "#{lists[2]}" + ' alt="画像3" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST3]", img_file)
                         @cite_img2 = lists[2]
                         @twitter = @twitter.gsub("[LIST3]", lists[2])
@@ -283,7 +283,7 @@ class ListOptionCreator
 
                     elsif test.list_option4 == '1'
                         lists.push(test.list3.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[3]}" + ' alt="画像4">'
+                        img_file = "<img src=" + "#{lists[3]}" + ' alt="画像4" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST4]", img_file)
                         @cite_img3 = lists[3]
                         @twitter = @twitter.gsub("[LIST4]", lists[3])
@@ -303,7 +303,7 @@ class ListOptionCreator
 
                     elsif test.list_option5 == '1'
                         lists.push(test.list5.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[4]}" + ' alt="画像5">'
+                        img_file = "<img src=" + "#{lists[4]}" + ' alt="画像5" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST5]", img_file)
                         @cite_img4 = lists[4]
                         @twitter = @twitter.gsub("[LIST5]", lists[4])
@@ -323,7 +323,7 @@ class ListOptionCreator
 
                     elsif test.list_option6 == '1'
                         lists.push(test.list6.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[5]}" + ' alt="画像6">'
+                        img_file = "<img src=" + "#{lists[5]}" + ' alt="画像6" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST6]", img_file)
                         @cite_img5 = lists[5]
                         @twitter = @twitter.gsub("[LIST6]", lists[5])
@@ -343,7 +343,7 @@ class ListOptionCreator
 
                     elsif test.list_option7 == '1'
                         lists.push(test.list7.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[6]}" + ' alt="画像7">'
+                        img_file = "<img src=" + "#{lists[6]}" + ' alt="画像7" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST7]", img_file)
                         @cite_img6 = lists[6]
                         @twitter = @twitter.gsub("[LIST7]", lists[6])
@@ -363,7 +363,7 @@ class ListOptionCreator
 
                     elsif test.list_option8 == '1'
                         lists.push(test.list8.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[7]}" + ' alt="画像8">'
+                        img_file = "<img src=" + "#{lists[7]}" + ' alt="画像8" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST8]", img_file)
                         @cite_img7 = lists[7]
                         @twitter = @twitter.gsub("[LIST8]", lists[7])
@@ -382,7 +382,7 @@ class ListOptionCreator
 
                     elsif test.list_option9 == '1'
                         lists.push(test.list9.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[8]}" + ' alt="画像9">'
+                        img_file = "<img src=" + "#{lists[8]}" + ' alt="画像9" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST9]", img_file)
                         @cite_img8 = lists[8]
                         @twitter = @twitter.gsub("[LIST9]", lists[8])
@@ -401,7 +401,7 @@ class ListOptionCreator
 
                     elsif test.list_option10 == '1'
                         lists.push(test.list10.split("\r\n")[num])
-                        img_file = "<img src=" + "#{lists[9]}" + ' alt="画像10">'
+                        img_file = "<img src=" + "#{lists[9]}" + ' alt="画像10" class="img-responsive  center-block h-50 w-50">'
                         test.basic_text = test.basic_text.gsub("[LIST10]", img_file)
                         @cite_img9 = lists[9]
                         @twitter = @twitter.gsub("[LIST10]", lists[9])

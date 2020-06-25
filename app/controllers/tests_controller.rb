@@ -41,9 +41,8 @@ class TestsController < ApplicationController
     if session[:name].present?
         @nickname = session[:name]
     else
-        @nickname = "こめんとメーカー"
-    end
-    
+        @nickname = Rails.application.secrets.twitter_commentmaker_name
+    end 
   end
 
   # GET /tests/1/edit
@@ -66,12 +65,14 @@ class TestsController < ApplicationController
 
     if session[:name].present?
         @test.author = session[:name]
+        @test.author_image = session[:image]
+        @test.uid = session[:uid]
     else
-        @test.author = "こめんとメーカー"
+        @test.author = Rails.application.secrets.twitter_commentmaker_name
+        @test.author_image = Rails.application.secrets.twitter_commentmaker_image
+        @test.uid = Rails.application.secrets.twitter_commentmaker_uid
+
     end
-    
-    @test.author_image = session[:image]
-    @test.uid = session[:uid]
     themes = []
     loop_num = @test.theme.split("\r\n").length - 1
     for num in 0..loop_num do
