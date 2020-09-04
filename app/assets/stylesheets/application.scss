@@ -209,3 +209,23 @@ button{
   padding-top: 120px;
   background: image-url("gif-load.gif") center center no-repeat;
 }
+
+//quiz
+@for $i from 1 through 10 {
+    .question#{$i} {
+    display: none;
+    }
+}
+
+.answers {
+    cursor: pointer;
+}
+
+#question_list{
+    display: none;
+    padding-left: 0px;
+}
+
+.questionlist{
+    padding-left: 0px;
+    }

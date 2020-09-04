@@ -108,7 +108,7 @@ class TestsController < ApplicationController
         themes.push("日替わり")
     end
     @test.theme = themes
-    if @test.update
+    if @test.update test_params
         text = @test.title
         @image = OgpCreator.build(text).path
         Test.upload_ogp_storage file_path: @image, storage_name: @test.id

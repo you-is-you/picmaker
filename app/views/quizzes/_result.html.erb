@@ -1,0 +1,35 @@
+<% description @quiz.title %>
+<div class="bg-warning p-3 my-3 rounded" id="ogp-image">
+    <div class="font-weight-bold h3">診断結果</div>
+    <div class="bg-white border border-dark">
+        <div class="my-5 h2">
+            <%= @quiz_result_title %>
+        </div>
+        <% if @quiz_result_img.present? %>
+            <div class="my-5">
+            </div>
+        <% end %>
+        <div class="my-5">
+            <%= @quiz_result_content %>
+        </div>
+    </div>
+</div>
+
+<div class="bg-warning p-3 rounded">
+    <div class="bg-white border border-dark py-3">
+    </div>
+</div>
+
+<div class="bg-warning p-3 rounded my-3">
+    <div class="bg-white border border-dark py-3">
+        <span class="font-weight-bold">こめんとメーカーが気に入ったら、↓こちら↓も押してくれると嬉しいです。</span>
+    </div>
+</div>
+
+<div class="bg-warning rounded">
+    <div class="bg-white border border-dark py-3">
+        <span class="font-weight-bold">別の名前でもう一度診断したい人は↓こちら↓</span>
+    </div>
+</div>
+
+<%= render 'name', quiz: @quiz %>

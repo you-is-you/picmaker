@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
     
+    resources :quizzes do
+    end
     resources :tests do
         collection do
          get 'list'
          get 'user'
        end
     end
-
+    
     root 'mains#index'
-
-    get 'tests/list'
-    get 'tests/user'
 
     # get '/tests/:id/:user_name'  => 'tests#show'
 

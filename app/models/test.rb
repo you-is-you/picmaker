@@ -1,4 +1,3 @@
-
 class Test
   include ActiveModel::Model
   include ActiveModel::Validations
@@ -169,40 +168,11 @@ class Test
     save
   end
 
-  def update
-    picmaker_ref = Test.collection.doc id
-    picmaker_ref.update \
-        title:        title,
-        author:       author,        
-        description:  description,
-        title_img:    title_img,
-        title_img_option:   title_img_option,
-        basic_text:   basic_text,
-        list1:       list1,
-        list2:       list2,
-        list3:       list3,
-        list4:       list4,
-        list5:       list5,
-        list6:       list6,
-        list7:       list7,
-        list8:       list8,
-        list9:       list9,
-        list10:      list10,
-        list_option1:       list_option1,
-        list_option2:       list_option2,
-        list_option3:       list_option3,
-        list_option4:       list_option4,
-        list_option5:       list_option5,
-        list_option6:       list_option6,
-        list_option7:       list_option7,
-        list_option8:       list_option8,
-        list_option9:       list_option9,
-        list_option10:      list_option10,
-        daily_change:    daily_change,
-        theme:    theme,
-        hash_tag:    hash_tag,
-        language:    language,
-        author_image:   author_image
+  def update attributes
+    attributes.each do |name, value|
+      send "#{name}=", value if respond_to? "#{name}="
+    end
+    save
   end
 
   def destroy

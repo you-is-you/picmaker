@@ -1,0 +1,429 @@
+<%= form_with(url: quiz, local: true, method: :get, class:"quiz_action") do |form| %>
+    <div class="bg-warning p-3 my-3 rounded">
+        <div class="bg-white border border-dark">
+            <div class="mx-auto my-5">
+            <div><%= form.label :user_name, "診断したい名前を入れてください", class:"control-label" %>
+                <div class="col answers current">
+                    <%= form.text_field :user_name, value:"名無し", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" ,id:"user_name" %>
+                    <%= form.hidden_field :result_value, id:"result_value", value:"" %>                
+                    <span class="btn-primary btn-lg text-white">診断する</span>
+                </div>
+            </div>
+
+                <section class="box5 questionbox">
+                    <div id="resulttop"></div>
+                        <div class="apppager">
+                            <div class="col m-3" id="question_list">
+                                <a class="prevpostslink btn btn-primary text-white" id="＜">＜</a>
+                                <% for num in 1..@quiz_question_content_num do %>
+                                    <span class="page larger btn btn-primary" id="<%= num %>"><%= num %></span>
+                                <% end %>
+                            </div>
+                            <ul class="questionlist">
+                                <% if @quiz.question1_content.present? %>
+                                    <li class="qb list-group list-unstyled question1" qno="question1">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question1_content %></div>
+                                        <% if @quiz.question1_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question1_option1_result1_score %>,"result2":<%= @quiz.question1_option1_result2_score %>,"result3":<%= @quiz.question1_option1_result3_score %>,"result4":<%= @quiz.question1_option1_result4_score %>,"result5":<%= @quiz.question1_option1_result5_score %>,"result6":<%= @quiz.question1_option1_result6_score %>,"result7":<%= @quiz.question1_option1_result7_score %>,"result8":<%= @quiz.question1_option1_result8_score %>} >
+                                                    <%= @quiz.question1_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question1_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question1_option2_result1_score %>,"result2":<%= @quiz.question1_option2_result2_score %>,"result3":<%= @quiz.question1_option2_result3_score %>,"result4":<%= @quiz.question1_option2_result4_score %>,"result5":<%= @quiz.question1_option2_result5_score %>,"result6":<%= @quiz.question1_option2_result6_score %>,"result7":<%= @quiz.question1_option2_result7_score %>,"result8":<%= @quiz.question1_option2_result8_score %>} >
+                                                    <%= @quiz.question1_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question1_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question1_option3_result1_score %>,"result2":<%= @quiz.question1_option3_result2_score %>,"result3":<%= @quiz.question1_option3_result3_score %>,"result4":<%= @quiz.question1_option3_result4_score %>,"result5":<%= @quiz.question1_option3_result5_score %>,"result6":<%= @quiz.question1_option3_result6_score %>,"result7":<%= @quiz.question1_option3_result7_score %>,"result8":<%= @quiz.question1_option3_result8_score %>} >
+                                                    <%= @quiz.question1_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question1_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question1_option4_result1_score %>,"result2":<%= @quiz.question1_option4_result2_score %>,"result3":<%= @quiz.question1_option4_result3_score %>,"result4":<%= @quiz.question1_option4_result4_score %>,"result5":<%= @quiz.question1_option4_result5_score %>,"result6":<%= @quiz.question1_option4_result6_score %>,"result7":<%= @quiz.question1_option4_result7_score %>,"result8":<%= @quiz.question1_option4_result8_score %>} >
+                                                    <%= @quiz.question1_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question1_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question1_option5_result1_score %>,"result2":<%= @quiz.question1_option5_result2_score %>,"result3":<%= @quiz.question1_option5_result3_score %>,"result4":<%= @quiz.question1_option5_result4_score %>,"result5":<%= @quiz.question1_option5_result5_score %>,"result6":<%= @quiz.question1_option5_result6_score %>,"result7":<%= @quiz.question1_option5_result7_score %>,"result8":<%= @quiz.question1_option5_result8_score %>} >
+                                                    <%= @quiz.question1_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question2_content.present? %>
+                                    <li class="qb list-group list-unstyled question2" qno="question2">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question2_content %></div>
+                                        <% if @quiz.question2_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question2_option1_result1_score %>,"result2":<%= @quiz.question2_option1_result2_score %>,"result3":<%= @quiz.question2_option1_result3_score %>,"result4":<%= @quiz.question2_option1_result4_score %>,"result5":<%= @quiz.question2_option1_result5_score %>,"result6":<%= @quiz.question2_option1_result6_score %>,"result7":<%= @quiz.question2_option1_result7_score %>,"result8":<%= @quiz.question2_option1_result8_score %>} >
+                                                    <%= @quiz.question2_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question2_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question2_option2_result1_score %>,"result2":<%= @quiz.question2_option2_result2_score %>,"result3":<%= @quiz.question2_option2_result3_score %>,"result4":<%= @quiz.question2_option2_result4_score %>,"result5":<%= @quiz.question2_option2_result5_score %>,"result6":<%= @quiz.question2_option2_result6_score %>,"result7":<%= @quiz.question2_option2_result7_score %>,"result8":<%= @quiz.question2_option2_result8_score %>} >
+                                                    <%= @quiz.question2_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question2_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question2_option3_result1_score %>,"result2":<%= @quiz.question2_option3_result2_score %>,"result3":<%= @quiz.question2_option3_result3_score %>,"result4":<%= @quiz.question2_option3_result4_score %>,"result5":<%= @quiz.question2_option3_result5_score %>,"result6":<%= @quiz.question2_option3_result6_score %>,"result7":<%= @quiz.question2_option3_result7_score %>,"result8":<%= @quiz.question2_option3_result8_score %>} >
+                                                    <%= @quiz.question2_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question2_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question2_option4_result1_score %>,"result2":<%= @quiz.question2_option4_result2_score %>,"result3":<%= @quiz.question2_option4_result3_score %>,"result4":<%= @quiz.question2_option4_result4_score %>,"result5":<%= @quiz.question2_option4_result5_score %>,"result6":<%= @quiz.question2_option4_result6_score %>,"result7":<%= @quiz.question2_option4_result7_score %>,"result8":<%= @quiz.question2_option4_result8_score %>} >
+                                                    <%= @quiz.question2_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question2_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question2_option5_result1_score %>,"result2":<%= @quiz.question2_option5_result2_score %>,"result3":<%= @quiz.question2_option5_result3_score %>,"result4":<%= @quiz.question2_option5_result4_score %>,"result5":<%= @quiz.question2_option5_result5_score %>,"result6":<%= @quiz.question2_option5_result6_score %>,"result7":<%= @quiz.question2_option5_result7_score %>,"result8":<%= @quiz.question2_option5_result8_score %>} >
+                                                    <%= @quiz.question2_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question3_content.present? %>
+                                    <li class="qb list-group list-unstyled question3" qno="question3">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question3_content %></div>
+                                        <% if @quiz.question3_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question3_option1_result1_score %>,"result2":<%= @quiz.question3_option1_result2_score %>,"result3":<%= @quiz.question3_option1_result3_score %>,"result4":<%= @quiz.question3_option1_result4_score %>,"result5":<%= @quiz.question3_option1_result5_score %>,"result6":<%= @quiz.question3_option1_result6_score %>,"result7":<%= @quiz.question3_option1_result7_score %>,"result8":<%= @quiz.question3_option1_result8_score %>} >
+                                                    <%= @quiz.question3_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question3_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question3_option2_result1_score %>,"result2":<%= @quiz.question3_option2_result2_score %>,"result3":<%= @quiz.question3_option2_result3_score %>,"result4":<%= @quiz.question3_option2_result4_score %>,"result5":<%= @quiz.question3_option2_result5_score %>,"result6":<%= @quiz.question3_option2_result6_score %>,"result7":<%= @quiz.question3_option2_result7_score %>,"result8":<%= @quiz.question3_option2_result8_score %>} >
+                                                    <%= @quiz.question3_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question3_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question3_option3_result1_score %>,"result2":<%= @quiz.question3_option3_result2_score %>,"result3":<%= @quiz.question3_option3_result3_score %>,"result4":<%= @quiz.question3_option3_result4_score %>,"result5":<%= @quiz.question3_option3_result5_score %>,"result6":<%= @quiz.question3_option3_result6_score %>,"result7":<%= @quiz.question3_option3_result7_score %>,"result8":<%= @quiz.question3_option3_result8_score %>} >
+                                                    <%= @quiz.question3_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question3_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question3_option4_result1_score %>,"result2":<%= @quiz.question3_option4_result2_score %>,"result3":<%= @quiz.question3_option4_result3_score %>,"result4":<%= @quiz.question3_option4_result4_score %>,"result5":<%= @quiz.question3_option4_result5_score %>,"result6":<%= @quiz.question3_option4_result6_score %>,"result7":<%= @quiz.question3_option4_result7_score %>,"result8":<%= @quiz.question3_option4_result8_score %>} >
+                                                    <%= @quiz.question3_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question3_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question3_option5_result1_score %>,"result2":<%= @quiz.question3_option5_result2_score %>,"result3":<%= @quiz.question3_option5_result3_score %>,"result4":<%= @quiz.question3_option5_result4_score %>,"result5":<%= @quiz.question3_option5_result5_score %>,"result6":<%= @quiz.question3_option5_result6_score %>,"result7":<%= @quiz.question3_option5_result7_score %>,"result8":<%= @quiz.question3_option5_result8_score %>} >
+                                                    <%= @quiz.question3_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question4_content.present? %>
+                                    <li class="qb list-group list-unstyled question4" qno="question4">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question4_content %></div>
+                                        <% if @quiz.question4_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question4_option1_result1_score %>,"result2":<%= @quiz.question4_option1_result2_score %>,"result3":<%= @quiz.question4_option1_result3_score %>,"result4":<%= @quiz.question4_option1_result4_score %>,"result5":<%= @quiz.question4_option1_result5_score %>,"result6":<%= @quiz.question4_option1_result6_score %>,"result7":<%= @quiz.question4_option1_result7_score %>,"result8":<%= @quiz.question4_option1_result8_score %>} >
+                                                    <%= @quiz.question4_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question4_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question4_option2_result1_score %>,"result2":<%= @quiz.question4_option2_result2_score %>,"result3":<%= @quiz.question4_option2_result3_score %>,"result4":<%= @quiz.question4_option2_result4_score %>,"result5":<%= @quiz.question4_option2_result5_score %>,"result6":<%= @quiz.question4_option2_result6_score %>,"result7":<%= @quiz.question4_option2_result7_score %>,"result8":<%= @quiz.question4_option2_result8_score %>} >
+                                                    <%= @quiz.question4_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question4_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question4_option3_result1_score %>,"result2":<%= @quiz.question4_option3_result2_score %>,"result3":<%= @quiz.question4_option3_result3_score %>,"result4":<%= @quiz.question4_option3_result4_score %>,"result5":<%= @quiz.question4_option3_result5_score %>,"result6":<%= @quiz.question4_option3_result6_score %>,"result7":<%= @quiz.question4_option3_result7_score %>,"result8":<%= @quiz.question4_option3_result8_score %>} >
+                                                    <%= @quiz.question4_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question4_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question4_option4_result1_score %>,"result2":<%= @quiz.question4_option4_result2_score %>,"result3":<%= @quiz.question4_option4_result3_score %>,"result4":<%= @quiz.question4_option4_result4_score %>,"result5":<%= @quiz.question4_option4_result5_score %>,"result6":<%= @quiz.question4_option4_result6_score %>,"result7":<%= @quiz.question4_option4_result7_score %>,"result8":<%= @quiz.question4_option4_result8_score %>} >
+                                                    <%= @quiz.question4_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question4_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question4_option5_result1_score %>,"result2":<%= @quiz.question4_option5_result2_score %>,"result3":<%= @quiz.question4_option5_result3_score %>,"result4":<%= @quiz.question4_option5_result4_score %>,"result5":<%= @quiz.question4_option5_result5_score %>,"result6":<%= @quiz.question4_option5_result6_score %>,"result7":<%= @quiz.question4_option5_result7_score %>,"result8":<%= @quiz.question4_option5_result8_score %>} >
+                                                    <%= @quiz.question4_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question5_content.present? %>
+                                    <li class="qb list-group list-unstyled question5" qno="question5">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question5_content %></div>
+                                        <% if @quiz.question5_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question5_option1_result1_score %>,"result2":<%= @quiz.question5_option1_result2_score %>,"result3":<%= @quiz.question5_option1_result3_score %>,"result4":<%= @quiz.question5_option1_result4_score %>,"result5":<%= @quiz.question5_option1_result5_score %>,"result6":<%= @quiz.question5_option1_result6_score %>,"result7":<%= @quiz.question5_option1_result7_score %>,"result8":<%= @quiz.question5_option1_result8_score %>} >
+                                                    <%= @quiz.question5_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question5_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question5_option2_result1_score %>,"result2":<%= @quiz.question5_option2_result2_score %>,"result3":<%= @quiz.question5_option2_result3_score %>,"result4":<%= @quiz.question5_option2_result4_score %>,"result5":<%= @quiz.question5_option2_result5_score %>,"result6":<%= @quiz.question5_option2_result6_score %>,"result7":<%= @quiz.question5_option2_result7_score %>,"result8":<%= @quiz.question5_option2_result8_score %>} >
+                                                    <%= @quiz.question5_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question5_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question5_option3_result1_score %>,"result2":<%= @quiz.question5_option3_result2_score %>,"result3":<%= @quiz.question5_option3_result3_score %>,"result4":<%= @quiz.question5_option3_result4_score %>,"result5":<%= @quiz.question5_option3_result5_score %>,"result6":<%= @quiz.question5_option3_result6_score %>,"result7":<%= @quiz.question5_option3_result7_score %>,"result8":<%= @quiz.question5_option3_result8_score %>} >
+                                                    <%= @quiz.question5_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question5_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question5_option4_result1_score %>,"result2":<%= @quiz.question5_option4_result2_score %>,"result3":<%= @quiz.question5_option4_result3_score %>,"result4":<%= @quiz.question5_option4_result4_score %>,"result5":<%= @quiz.question5_option4_result5_score %>,"result6":<%= @quiz.question5_option4_result6_score %>,"result7":<%= @quiz.question5_option4_result7_score %>,"result8":<%= @quiz.question5_option4_result8_score %>} >
+                                                    <%= @quiz.question5_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question5_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question5_option5_result1_score %>,"result2":<%= @quiz.question5_option5_result2_score %>,"result3":<%= @quiz.question5_option5_result3_score %>,"result4":<%= @quiz.question5_option5_result4_score %>,"result5":<%= @quiz.question5_option5_result5_score %>,"result6":<%= @quiz.question5_option5_result6_score %>,"result7":<%= @quiz.question5_option5_result7_score %>,"result8":<%= @quiz.question5_option5_result8_score %>} >
+                                                    <%= @quiz.question5_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question6_content.present? %>
+                                    <li class="qb list-group list-unstyled question6" qno="question6">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question6_content %></div>
+                                        <% if @quiz.question6_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question6_option1_result1_score %>,"result2":<%= @quiz.question6_option1_result2_score %>,"result3":<%= @quiz.question6_option1_result3_score %>,"result4":<%= @quiz.question6_option1_result4_score %>,"result5":<%= @quiz.question6_option1_result5_score %>,"result6":<%= @quiz.question6_option1_result6_score %>,"result7":<%= @quiz.question6_option1_result7_score %>,"result8":<%= @quiz.question6_option1_result8_score %>} >
+                                                    <%= @quiz.question6_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question6_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question6_option2_result1_score %>,"result2":<%= @quiz.question6_option2_result2_score %>,"result3":<%= @quiz.question6_option2_result3_score %>,"result4":<%= @quiz.question6_option2_result4_score %>,"result5":<%= @quiz.question6_option2_result5_score %>,"result6":<%= @quiz.question6_option2_result6_score %>,"result7":<%= @quiz.question6_option2_result7_score %>,"result8":<%= @quiz.question6_option2_result8_score %>} >
+                                                    <%= @quiz.question6_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question6_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question6_option3_result1_score %>,"result2":<%= @quiz.question6_option3_result2_score %>,"result3":<%= @quiz.question6_option3_result3_score %>,"result4":<%= @quiz.question6_option3_result4_score %>,"result5":<%= @quiz.question6_option3_result5_score %>,"result6":<%= @quiz.question6_option3_result6_score %>,"result7":<%= @quiz.question6_option3_result7_score %>,"result8":<%= @quiz.question6_option3_result8_score %>} >
+                                                    <%= @quiz.question6_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question6_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question6_option4_result1_score %>,"result2":<%= @quiz.question6_option4_result2_score %>,"result3":<%= @quiz.question6_option4_result3_score %>,"result4":<%= @quiz.question6_option4_result4_score %>,"result5":<%= @quiz.question6_option4_result5_score %>,"result6":<%= @quiz.question6_option4_result6_score %>,"result7":<%= @quiz.question6_option4_result7_score %>,"result8":<%= @quiz.question6_option4_result8_score %>} >
+                                                    <%= @quiz.question6_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question6_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question6_option5_result1_score %>,"result2":<%= @quiz.question6_option5_result2_score %>,"result3":<%= @quiz.question6_option5_result3_score %>,"result4":<%= @quiz.question6_option5_result4_score %>,"result5":<%= @quiz.question6_option5_result5_score %>,"result6":<%= @quiz.question6_option5_result6_score %>,"result7":<%= @quiz.question6_option5_result7_score %>,"result8":<%= @quiz.question6_option5_result8_score %>} >
+                                                    <%= @quiz.question6_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question7_content.present? %>
+                                    <li class="qb list-group list-unstyled question7" qno="question7">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question7_content %></div>
+                                        <% if @quiz.question7_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question7_option1_result1_score %>,"result2":<%= @quiz.question7_option1_result2_score %>,"result3":<%= @quiz.question7_option1_result3_score %>,"result4":<%= @quiz.question7_option1_result4_score %>,"result5":<%= @quiz.question7_option1_result5_score %>,"result6":<%= @quiz.question7_option1_result6_score %>,"result7":<%= @quiz.question7_option1_result7_score %>,"result8":<%= @quiz.question7_option1_result8_score %>} >
+                                                    <%= @quiz.question7_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question7_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question7_option2_result1_score %>,"result2":<%= @quiz.question7_option2_result2_score %>,"result3":<%= @quiz.question7_option2_result3_score %>,"result4":<%= @quiz.question7_option2_result4_score %>,"result5":<%= @quiz.question7_option2_result5_score %>,"result6":<%= @quiz.question7_option2_result6_score %>,"result7":<%= @quiz.question7_option2_result7_score %>,"result8":<%= @quiz.question7_option2_result8_score %>} >
+                                                    <%= @quiz.question7_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question7_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question7_option3_result1_score %>,"result2":<%= @quiz.question7_option3_result2_score %>,"result3":<%= @quiz.question7_option3_result3_score %>,"result4":<%= @quiz.question7_option3_result4_score %>,"result5":<%= @quiz.question7_option3_result5_score %>,"result6":<%= @quiz.question7_option3_result6_score %>,"result7":<%= @quiz.question7_option3_result7_score %>,"result8":<%= @quiz.question7_option3_result8_score %>} >
+                                                    <%= @quiz.question7_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question7_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question7_option4_result1_score %>,"result2":<%= @quiz.question7_option4_result2_score %>,"result3":<%= @quiz.question7_option4_result3_score %>,"result4":<%= @quiz.question7_option4_result4_score %>,"result5":<%= @quiz.question7_option4_result5_score %>,"result6":<%= @quiz.question7_option4_result6_score %>,"result7":<%= @quiz.question7_option4_result7_score %>,"result8":<%= @quiz.question7_option4_result8_score %>} >
+                                                    <%= @quiz.question7_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question7_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question7_option5_result1_score %>,"result2":<%= @quiz.question7_option5_result2_score %>,"result3":<%= @quiz.question7_option5_result3_score %>,"result4":<%= @quiz.question7_option5_result4_score %>,"result5":<%= @quiz.question7_option5_result5_score %>,"result6":<%= @quiz.question7_option5_result6_score %>,"result7":<%= @quiz.question7_option5_result7_score %>,"result8":<%= @quiz.question7_option5_result8_score %>} >
+                                                    <%= @quiz.question7_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question8_content.present? %>
+                                    <li class="qb list-group list-unstyled question8" qno="question8">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question8_content %></div>
+                                        <% if @quiz.question8_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question8_option1_result1_score %>,"result2":<%= @quiz.question8_option1_result2_score %>,"result3":<%= @quiz.question8_option1_result3_score %>,"result4":<%= @quiz.question8_option1_result4_score %>,"result5":<%= @quiz.question8_option1_result5_score %>,"result6":<%= @quiz.question8_option1_result6_score %>,"result7":<%= @quiz.question8_option1_result7_score %>,"result8":<%= @quiz.question8_option1_result8_score %>} >
+                                                    <%= @quiz.question8_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question8_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question8_option2_result1_score %>,"result2":<%= @quiz.question8_option2_result2_score %>,"result3":<%= @quiz.question8_option2_result3_score %>,"result4":<%= @quiz.question8_option2_result4_score %>,"result5":<%= @quiz.question8_option2_result5_score %>,"result6":<%= @quiz.question8_option2_result6_score %>,"result7":<%= @quiz.question8_option2_result7_score %>,"result8":<%= @quiz.question8_option2_result8_score %>} >
+                                                    <%= @quiz.question8_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question8_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question8_option3_result1_score %>,"result2":<%= @quiz.question8_option3_result2_score %>,"result3":<%= @quiz.question8_option3_result3_score %>,"result4":<%= @quiz.question8_option3_result4_score %>,"result5":<%= @quiz.question8_option3_result5_score %>,"result6":<%= @quiz.question8_option3_result6_score %>,"result7":<%= @quiz.question8_option3_result7_score %>,"result8":<%= @quiz.question8_option3_result8_score %>} >
+                                                    <%= @quiz.question8_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question8_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question8_option4_result1_score %>,"result2":<%= @quiz.question8_option4_result2_score %>,"result3":<%= @quiz.question8_option4_result3_score %>,"result4":<%= @quiz.question8_option4_result4_score %>,"result5":<%= @quiz.question8_option4_result5_score %>,"result6":<%= @quiz.question8_option4_result6_score %>,"result7":<%= @quiz.question8_option4_result7_score %>,"result8":<%= @quiz.question8_option4_result8_score %>} >
+                                                    <%= @quiz.question8_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question8_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question8_option5_result1_score %>,"result2":<%= @quiz.question8_option5_result2_score %>,"result3":<%= @quiz.question8_option5_result3_score %>,"result4":<%= @quiz.question8_option5_result4_score %>,"result5":<%= @quiz.question8_option5_result5_score %>,"result6":<%= @quiz.question8_option5_result6_score %>,"result7":<%= @quiz.question8_option5_result7_score %>,"result8":<%= @quiz.question8_option5_result8_score %>} >
+                                                    <%= @quiz.question8_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question9_content.present? %>
+                                    <li class="qb list-group list-unstyled question9" qno="question9">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question9_content %></div>
+                                        <% if @quiz.question9_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question9_option1_result1_score %>,"result2":<%= @quiz.question9_option1_result2_score %>,"result3":<%= @quiz.question9_option1_result3_score %>,"result4":<%= @quiz.question9_option1_result4_score %>,"result5":<%= @quiz.question9_option1_result5_score %>,"result6":<%= @quiz.question9_option1_result6_score %>,"result7":<%= @quiz.question9_option1_result7_score %>,"result8":<%= @quiz.question9_option1_result8_score %>} >
+                                                    <%= @quiz.question9_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question9_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question9_option2_result1_score %>,"result2":<%= @quiz.question9_option2_result2_score %>,"result3":<%= @quiz.question9_option2_result3_score %>,"result4":<%= @quiz.question9_option2_result4_score %>,"result5":<%= @quiz.question9_option2_result5_score %>,"result6":<%= @quiz.question9_option2_result6_score %>,"result7":<%= @quiz.question9_option2_result7_score %>,"result8":<%= @quiz.question9_option2_result8_score %>} >
+                                                    <%= @quiz.question9_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question9_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question9_option3_result1_score %>,"result2":<%= @quiz.question9_option3_result2_score %>,"result3":<%= @quiz.question9_option3_result3_score %>,"result4":<%= @quiz.question9_option3_result4_score %>,"result5":<%= @quiz.question9_option3_result5_score %>,"result6":<%= @quiz.question9_option3_result6_score %>,"result7":<%= @quiz.question9_option3_result7_score %>,"result8":<%= @quiz.question9_option3_result8_score %>} >
+                                                    <%= @quiz.question9_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question9_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question9_option4_result1_score %>,"result2":<%= @quiz.question9_option4_result2_score %>,"result3":<%= @quiz.question9_option4_result3_score %>,"result4":<%= @quiz.question9_option4_result4_score %>,"result5":<%= @quiz.question9_option4_result5_score %>,"result6":<%= @quiz.question9_option4_result6_score %>,"result7":<%= @quiz.question9_option4_result7_score %>,"result8":<%= @quiz.question9_option4_result8_score %>} >
+                                                    <%= @quiz.question9_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question9_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question9_option5_result1_score %>,"result2":<%= @quiz.question9_option5_result2_score %>,"result3":<%= @quiz.question9_option5_result3_score %>,"result4":<%= @quiz.question9_option5_result4_score %>,"result5":<%= @quiz.question9_option5_result5_score %>,"result6":<%= @quiz.question9_option5_result6_score %>,"result7":<%= @quiz.question9_option5_result7_score %>,"result8":<%= @quiz.question9_option5_result8_score %>} >
+                                                    <%= @quiz.question9_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                                <% if @quiz.question10_content.present? %>
+                                    <li class="qb list-group list-unstyled question10" qno="question10">
+                                        <div class="text-white bg-dark font-weight-bold"><%= @quiz.question10_content %></div>
+                                        <% if @quiz.question10_option1.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question10_option1_result1_score %>,"result2":<%= @quiz.question10_option1_result2_score %>,"result3":<%= @quiz.question10_option1_result3_score %>,"result4":<%= @quiz.question10_option1_result4_score %>,"result5":<%= @quiz.question10_option1_result5_score %>,"result6":<%= @quiz.question10_option1_result6_score %>,"result7":<%= @quiz.question10_option1_result7_score %>,"result8":<%= @quiz.question10_option1_result8_score %>} >
+                                                    <%= @quiz.question10_option1 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question10_option2.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question10_option2_result1_score %>,"result2":<%= @quiz.question10_option2_result2_score %>,"result3":<%= @quiz.question10_option2_result3_score %>,"result4":<%= @quiz.question10_option2_result4_score %>,"result5":<%= @quiz.question10_option2_result5_score %>,"result6":<%= @quiz.question10_option2_result6_score %>,"result7":<%= @quiz.question10_option2_result7_score %>,"result8":<%= @quiz.question10_option2_result8_score %>} >
+                                                    <%= @quiz.question10_option2 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question10_option3.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question10_option3_result1_score %>,"result2":<%= @quiz.question10_option3_result2_score %>,"result3":<%= @quiz.question10_option3_result3_score %>,"result4":<%= @quiz.question10_option3_result4_score %>,"result5":<%= @quiz.question10_option3_result5_score %>,"result6":<%= @quiz.question10_option3_result6_score %>,"result7":<%= @quiz.question10_option3_result7_score %>,"result8":<%= @quiz.question10_option3_result8_score %>} >
+                                                    <%= @quiz.question10_option3 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question10_option4.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question10_option4_result1_score %>,"result2":<%= @quiz.question10_option4_result2_score %>,"result3":<%= @quiz.question10_option4_result3_score %>,"result4":<%= @quiz.question10_option4_result4_score %>,"result5":<%= @quiz.question10_option4_result5_score %>,"result6":<%= @quiz.question10_option4_result6_score %>,"result7":<%= @quiz.question10_option4_result7_score %>,"result8":<%= @quiz.question10_option4_result8_score %>} >
+                                                    <%= @quiz.question10_option4 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                        <% if @quiz.question10_option5.present? %>
+                                            <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
+                                                <li class ="py-3" data-resultscore = {"result1":<%= @quiz.question10_option5_result1_score %>,"result2":<%= @quiz.question10_option5_result2_score %>,"result3":<%= @quiz.question10_option5_result3_score %>,"result4":<%= @quiz.question10_option5_result4_score %>,"result5":<%= @quiz.question10_option5_result5_score %>,"result6":<%= @quiz.question10_option5_result6_score %>,"result7":<%= @quiz.question10_option5_result7_score %>,"result8":<%= @quiz.question10_option5_result8_score %>} >
+                                                    <%= @quiz.question10_option5 %>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>    
+<% end %>
