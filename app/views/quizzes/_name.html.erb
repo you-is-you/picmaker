@@ -1,10 +1,10 @@
-<%= form_with(url: quiz, local: true, method: :get, class:"quiz_action") do |form| %>
+<%= form_with(url: quiz, local: true, method: :get, class:"quiz_action", skip_enforcing_utf8: true) do |form| %>
     <div class="bg-warning p-3 my-3 rounded">
         <div class="bg-white border border-dark">
-            <div class="mx-auto my-5">
+            <div class="mx-auto">
             <div><%= form.label :user_name, "診断したい名前を入れてください", class:"control-label" %>
                 <div class="col answers current">
-                    <%= form.text_field :user_name, value:"名無し", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" ,id:"user_name" %>
+                    <%= form.text_field :user_name, value:"あなた", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" ,id:"user_name" %>
                     <%= form.hidden_field :result_value, id:"result_value", value:"" %>                
                     <span class="btn-primary btn-lg text-white">診断する</span>
                 </div>
@@ -13,15 +13,17 @@
                 <section class="box5 questionbox">
                     <div id="resulttop"></div>
                         <div class="apppager">
-                            <div class="col m-3" id="question_list">
-                                <a class="prevpostslink btn btn-primary text-white" id="＜">＜</a>
-                                <% for num in 1..@quiz_question_content_num do %>
-                                    <span class="page larger btn btn-primary" id="<%= num %>"><%= num %></span>
-                                <% end %>
-                            </div>
                             <ul class="questionlist">
                                 <% if @quiz.question1_content.present? %>
                                     <li class="qb list-group list-unstyled question1" qno="question1">
+                                        <% if @quiz.question1_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question1_img}" %>
+                                                <%= link_to "#{@quiz.question1_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question1_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question1_content %></div>
                                         <% if @quiz.question1_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="0">
@@ -62,6 +64,14 @@
                                 <% end %>
                                 <% if @quiz.question2_content.present? %>
                                     <li class="qb list-group list-unstyled question2" qno="question2">
+                                        <% if @quiz.question2_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question2_img}" %>
+                                                <%= link_to "#{@quiz.question2_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question2_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question2_content %></div>
                                         <% if @quiz.question2_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="1">
@@ -102,6 +112,14 @@
                                 <% end %>
                                 <% if @quiz.question3_content.present? %>
                                     <li class="qb list-group list-unstyled question3" qno="question3">
+                                        <% if @quiz.question3_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question3_img}" %>
+                                                <%= link_to "#{@quiz.question3_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question3_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question3_content %></div>
                                         <% if @quiz.question3_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="2">
@@ -142,6 +160,14 @@
                                 <% end %>
                                 <% if @quiz.question4_content.present? %>
                                     <li class="qb list-group list-unstyled question4" qno="question4">
+                                        <% if @quiz.question4_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question4_img}" %>
+                                                <%= link_to "#{@quiz.question4_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question4_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question4_content %></div>
                                         <% if @quiz.question4_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="3">
@@ -182,6 +208,14 @@
                                 <% end %>
                                 <% if @quiz.question5_content.present? %>
                                     <li class="qb list-group list-unstyled question5" qno="question5">
+                                        <% if @quiz.question5_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question5_img}" %>
+                                                <%= link_to "#{@quiz.question5_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question5_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question5_content %></div>
                                         <% if @quiz.question5_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="4">
@@ -222,6 +256,14 @@
                                 <% end %>
                                 <% if @quiz.question6_content.present? %>
                                     <li class="qb list-group list-unstyled question6" qno="question6">
+                                        <% if @quiz.question6_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question6_img}" %>
+                                                <%= link_to "#{@quiz.question6_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question6_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question6_content %></div>
                                         <% if @quiz.question6_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="5">
@@ -262,6 +304,14 @@
                                 <% end %>
                                 <% if @quiz.question7_content.present? %>
                                     <li class="qb list-group list-unstyled question7" qno="question7">
+                                        <% if @quiz.question7_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question7_img}" %>
+                                                <%= link_to "#{@quiz.question7_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question7_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question7_content %></div>
                                         <% if @quiz.question7_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="6">
@@ -302,6 +352,14 @@
                                 <% end %>
                                 <% if @quiz.question8_content.present? %>
                                     <li class="qb list-group list-unstyled question8" qno="question8">
+                                        <% if @quiz.question8_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question8_img}" %>
+                                                <%= link_to "#{@quiz.question8_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question8_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question8_content %></div>
                                         <% if @quiz.question8_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="7">
@@ -342,6 +400,14 @@
                                 <% end %>
                                 <% if @quiz.question9_content.present? %>
                                     <li class="qb list-group list-unstyled question9" qno="question9">
+                                        <% if @quiz.question9_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question9_img}" %>
+                                                <%= link_to "#{@quiz.question9_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question9_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question9_content %></div>
                                         <% if @quiz.question9_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="8">
@@ -382,6 +448,14 @@
                                 <% end %>
                                 <% if @quiz.question10_content.present? %>
                                     <li class="qb list-group list-unstyled question10" qno="question10">
+                                        <% if @quiz.question10_img.present? %>
+                                            <div class="embed-responsive mx-auto">
+                                                <%= image_tag "#{@quiz.question10_img}" %>
+                                                <%= link_to "#{@quiz.question10_img}" do %>
+                                                    <p class="text-muted"><%= @quiz.question10_img %></p>
+                                                <% end %>
+                                            </div>
+                                        <% end %>
                                         <div class="text-white bg-dark font-weight-bold"><%= @quiz.question10_content %></div>
                                         <% if @quiz.question10_option1.present? %>
                                             <ul class="answers btn-light list-group list-unstyled border-bottom border-warning" data-ansno="9">
@@ -421,6 +495,12 @@
                                     </li>
                                 <% end %>
                             </ul>
+                            <div class="col m-3" id="question_list">
+                                <a class="prevpostslink btn btn-primary text-white" id="prev_button">＜</a>
+                                <% for num in 1..@quiz_question_content_num do %>
+                                    <span class="page larger btn btn-primary" id="page<%= num %>"><%= num %></span>
+                                <% end %>
+                            </div>
                         </div>
                 </section>
             </div>

@@ -3,57 +3,54 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-10 col-md-10 mx-auto mt-5">
-                    <div class="">
-                        <%= link_to @quiz, class:"font-weight-bold text-dark text-decoration-none" do %>
-                            <h1><%= @quiz.title %></h1>
+                    <div class="bg-light mb-1">
+                            <%= link_to @quiz, class:"font-weight-bold text-dark text-decoration-none" do %>
+                                <h1><%= @quiz.title %></h1>
+                            <% end %>
+                        <% if @quiz.title_img.present? %>
+                            <div class="embed-responsive mx-auto">
+                                <%= link_to "#{@quiz.title_img}" do %>
+                                    <%= image_tag "#{@quiz.title_img}" %>
+                                    <p class="text-muted"><%= @quiz.title_img %></p>
+                                <% end %>
+                            </div>
                         <% end %>
-                    </div> 
-                    <% if @quiz.title_img.present? %>
-                        <div class="embed-responsive embed-responsive-16by9 col-xs-6 col-md-6 mx-auto">
-                            <%= simple_format(@quiz.title_img, {}, wrapper_tag: "div", sanitize: false) %>
+                        <div class="my-3" style="text-align: center;word-break: break-all;">                        
+                            <%= simple_format(@quiz.description, {}, wrapper_tag: "div", sanitize: false) %>
                         </div>
-                    <% end %>
-                    <div class="my-3" style="text-align: center;word-break: break-all;">                        
-                        <%= simple_format(@quiz.description, {}, wrapper_tag: "div", sanitize: false) %>
                     </div>
-                    <div class="bg-light py-1">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    <%= link_to "/quizs/list?search=#{@quiz.author}" do %>
-                                    <%= image_tag "#{@quiz.author_image}", class:"img-fluid rounded-circle" %>
-                                    <% end %>
-                                    </td>
-                                    <td class="font-weight-bold">
-                                    <%= link_to "/quizs/list?search=#{@quiz.author}" do %>
-                                        <%= @quiz.author %>
-                                    <% end %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme0}" ,"/quizs/list?search=#{@theme0}" %></span>
-                                        <!-- <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme1}" ,"/quizs/list?search=#{@theme1}" %></span>
-                                        <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme2}" ,"/quizs/list?search=#{@theme2}" %></span> -->
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  
+                        <div class="bg-light py-1">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                        <%= link_to "/quizs/list?search=#{@quiz.author}" do %>
+                                        <%= image_tag "#{@quiz.author_image}", class:" rounded-circle" %>
+                                        <% end %>
+                                        </td>
+                                        <td class="font-weight-bold">
+                                        <%= link_to "/quizs/list?search=#{@quiz.author}" do %>
+                                            <%= @quiz.author %>
+                                        <% end %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme0}" ,"/quizs/list?search=#{@theme0}" %></span>
+                                            <!-- <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme1}" ,"/quizs/list?search=#{@theme1}" %></span>
+                                            <span class="border bg-white"><i class="fa fa-tag" aria-hidden="true"></i><%= link_to "#{@theme2}" ,"/quizs/list?search=#{@theme2}" %></span> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     <% if params[:user_name].nil? %>
                         <%= render 'name', quiz: @quiz %>
                     <% else %>
                         <%= render 'result', quiz: @quiz %>
                     <% end %>
 
-                <%= render 'ranking', quiz: @quiz %>
-                <div class="border mx-auto mb-5">
-                    <%= link_to new_quiz_path, class:"btn btn-lg btn-primary m-3" do %>
-                        <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
-                    <% end %>
-                    <div class="d-inline-block h5">あなたのオリジナル診断をつくろう！</div>
-                </div>             
+                <%= render 'create_quiz', quiz: @quiz %>
             </div>
         </div>
     </div>

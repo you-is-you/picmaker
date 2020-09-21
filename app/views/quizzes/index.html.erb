@@ -1,34 +1,35 @@
-<p id="notice"><%= notice %></p>
+<% title '占いメーカー' %>
+<% description 'ツイッターなどのSNSでシェアできるおもしろ診断で遊べるサイトです。人気の診断で遊べるだけでなく、オリジナルの診断を作ることもできますので、お気軽にお試しください。' %>
+<div class="text-center">
+    <div class="container">
 
-<h1>Quizzes</h1>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-5">
+                <div class="bg-warning p-3 mb-5 rounded">
+                    <div class="border pb-5 pt-3 col-xs-4 col-md-8 mx-auto bg-white">
+                        <p class="p-3 h5">
+                            ツイッターなどのSNSでシェアできるおもしろ診断で遊べるサイトです。
+                        </p>
+                        <p class="h5 pb-3">
+                            人気の診断で遊べるだけでなく、オリジナルの診断を作ることもできますので、お気軽にお試しください。
+                        </p>
 
-    <% @quizzes.each do |quiz| %>
-        <div class="bg-warning p-1 mb-3 rounded">
-            <ul class="list-group">
-                <%= link_to quiz, class:"font-weight-bold" do %>
-                    <% if quiz.title_img.present? %>
-                        <% if quiz.title_img_option == '1' %>
-                        <%    img_file = "<img src=" + "#{quiz.title_img}" + ' alt="タイトル画像">' %>
-                        <%    quiz.title_img = img_file %>
-                        <% elsif quiz.title_img_option == '2' %>
-                        <%    movie_file = "<iframe class=" + "embed-responsive-item" +  %>
-                        <%    " src=" + "https://www.youtube.com/embed/" +  "#{quiz.title_img[32..42]}" + " frameborder=" + "0" + %>
-                        <%    " allow=" + "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" + " allowfullscreen></iframe>" %>
-                        <%    quiz.title_img = movie_file %>
+                        <% if session[:oauth_token].nil? %>
+                            <%= link_to new_quiz_path, class:"btn btn-lg btn-primary mb-3 mr-2", data: {"turbolinks" => false} do %>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                            <% end %>
+                            <div class="d-inline-block h5 col-xs-4">ログインすれば、あなたの名前で診断作れます。</div>
+                            <div class="d-inline-block h5 col-xs-4">ログインしなくても、こめんとメーカーという名前で診断の作成ができます。</div>
+                        <% else %>
+                            <%= link_to new_quiz_path, class:"btn btn-lg btn-primary mb-3 mr-2", data: {"turbolinks" => false} do %>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true">診断を作る</i>
+                            <% end %>
+                            <div class="d-inline-block h5 col-xs-4"><%= session[:name] %>のオリジナル診断をつくろう！</div>
                         <% end %>
-                        <li class="list-group-item">
-                            <%= simple_format(quiz.title_img, {}, wrapper_tag: "div", sanitize: false, class:"w-50 h-50") %>
-                        </li>
-                    <% end %>
-                    <li class="list-group-item">
-                    <%= quiz.title %>                                      
-                    </li>
-                    <li class="list-group-item">
-                        <span class="text-muted"><%= quiz.description %></span>
-                    </li>
-                <% end %>
-            </ul>
+                    </div>
+                </div>
+                <%= render 'ranking', test: @quiz %>
+            </div>
         </div>
-    <% end %>
-
-<%= link_to 'New Quiz', new_quiz_path %>
+    </div>
+</div>

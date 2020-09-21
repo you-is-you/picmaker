@@ -52,10 +52,8 @@ class Test
   end
   
   def self.search_query options = {}
-    p options[:search]
     query = collection.where("theme", "array-contains", "#{options[:search]}")
     query = query.limit(1)
-    p query
     picmakers = []
     begin
       query.get do |picmaker|
@@ -68,10 +66,8 @@ class Test
   end
 
     def self.user_query options = {}
-        p options[:uid]
         query = collection.where "uid", "=", "#{options[:uid]}"
         query = query.limit(30)
-        p query
         picmakers = []
         begin
         query.get do |picmaker|
@@ -79,7 +75,6 @@ class Test
         end
         rescue
         end
-        p picmakers
         picmakers
     end
 

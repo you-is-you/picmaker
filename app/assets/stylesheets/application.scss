@@ -217,6 +217,16 @@ button{
     }
 }
 
+@for $i from 2 through 10 {
+    #page#{$i} {
+    display: none;
+    }
+}
+
+#prev_button {
+    display: none;
+}
+
 .answers {
     cursor: pointer;
 }
@@ -228,4 +238,9 @@ button{
 
 .questionlist{
     padding-left: 0px;
-    }
+}
+
+img {
+    max-width: 25%;
+    max-height: 25%;
+}

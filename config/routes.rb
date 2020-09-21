@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
     
     resources :quizzes do
+        collection do
+         get 'list'
+         get 'user'
+       end
     end
     resources :tests do
         collection do

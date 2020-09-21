@@ -91,6 +91,11 @@ class QuizzesController < ApplicationController
         else
         # どの値にも一致しない場合に行う処理
         end
+        now_url = request.url.to_s
+        @follow_url = ShareButton.follow_url_maker(now_url)
+        twitter = @quiz_result_title + "\r\n" + @quiz_result_content
+        @twitter_url = ShareButton.twitter_url_maker(twitter, @quiz.hash_tag, now_url)
+
     end
 
   end
@@ -108,15 +113,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1/edit
   def edit
-    @quiz = Quiz.find params[:id]
-    
-    # theme_length = @quiz.theme.length
-    # loop_num = theme_length - 2
-    # theme_text = ""
-    # for num in 0..loop_num do
-    #     theme_text = theme_text + @quiz.theme[num] + "\r\n"
-    # end
-    # @quiz.theme = theme_text
+    @quiz = Quiz.find params[:id] 
   end
 
   # POST /quizzes
@@ -169,7 +166,16 @@ class QuizzesController < ApplicationController
   # DELETE /quizzes/1
   def destroy
     @quiz.destroy
-    redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.'
+    redirect_to quizzes_url
+  end
+
+  # 一覧表示
+  def list 
+    if params[:search].present?
+        @quizzes = Quiz.search_query search: params[:search]
+    else
+        @quizzes = Quiz.all_query
+    end
   end
 
   private

@@ -3,7 +3,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 mt-5">
-            <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>診断を作成する</h1>
+            <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>名前診断を作成する</h1>
+           
+            <%= link_to "クイズ診断に変更", '/quizzes/new', class:"btn btn-sm btn-primary", data: {"turbolinks" => false} %>
+
             <%= render 'form', test: @test %>
             </div>
         </div>

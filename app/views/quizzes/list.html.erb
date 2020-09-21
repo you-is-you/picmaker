@@ -1,0 +1,59 @@
+<% title '診断一覧' %>
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-5">
+                <div class="mb-5 col-xs-4 col-md-8 mx-auto">
+                    <div class="bg-warning p-3 my-3 rounded">
+                        <%= link_to "スポーツ" ,'/quizzes/list?search=スポーツ', class:"btn btn-light btn-sm" %>
+                        <%= link_to "読書", '/quizzes/list?search=読書', class:"btn btn-light btn-sm" %>
+                        <%= link_to "インターネット", '/quizzes/list?search=インターネット', class:"btn btn-light btn-sm" %>
+                        <%= link_to "旅行", '/quizzes/list?search=旅行', class:"btn btn-light btn-sm" %>
+                        <%= link_to "音楽", '/quizzes/list?search=音楽', class:"btn btn-light btn-sm" %>
+                        <%= link_to "料理", '/quizzes/list?search=料理', class:"btn btn-light btn-sm" %>
+                        <%= link_to "ゲーム", '/quizzes/list?search=ゲーム', class:"btn btn-light btn-sm" %>
+                        <%= link_to "アニメ", '/quizzes/list?search=アニメ', class:"btn btn-light btn-sm" %>
+                        <%= link_to "漫画", '/quizzes/list?search=漫画', class:"btn btn-light btn-sm" %>
+                        <%= link_to "学校", '/quizzes/list?search=学校', class:"btn btn-light btn-sm" %>
+                    </div>
+
+                    <%= form_with(url: '/quizzes/list', local: true, method: :get) do |form| %>
+                        <div class="bg-warning p-3 my-3 rounded">
+                            <div class="bg-white border border-dark">
+                                <div class="col-xs-4 col-md-8 mx-auto my-5">
+                                <div><%= form.label :search, "検索したいテーマを入力してください。", class:"control-label" %></div>
+                                    <div class="col">
+                                        <%= form.text_field :search, placeholder:"クイズ診断検索", autocomplete:"off", maxlength:255 ,class:"form-control d-inline-block col-sm-8" %>
+                                        <%= form.submit '検索', :class => 'btn btn-light btn-sm' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <div class="bg-light p-3"><i class="fa fa-file-o" aria-hidden="true"></i><%= quiz_list_searchname_change %></div>
+                        <% @quizzes.each do |quiz| %>
+                            <div class="bg-warning p-1 mb-3 rounded">
+                                <ul class="list-group">
+                                    <%= link_to quiz, class:"font-weight-bold" do %>
+                                        <% if quiz.title_img.present? %>
+                                            <li class="list-group-item">
+                                                <%= simple_format(list_title_img_option(quiz), {}, wrapper_tag: "div", sanitize: false, class:"w-50 h-50") %>
+                                            </li>
+                                        <% end %>
+                                        <li class="list-group-item">
+                                        <%= quiz.title %>                                      
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="text-muted"><%= quiz.description %></span>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

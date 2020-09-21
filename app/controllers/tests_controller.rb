@@ -16,6 +16,8 @@ class TestsController < ApplicationController
     @test = Test.find params[:id]
     @twitter_ogp_image = "https://storage.googleapis.com/picmaker-ogp-bucket/" + params[:id] + ".jpg"
     @twitter_url = ListOptionCreator.listmaker(@test, params[:user_name], now_url)
+    @twitter_url = ListOptionCreator.listmaker(@test, params[:user_name], now_url)
+
     if @test.daily_change == "1"
         @daily_change = "日替わり" 
     end
