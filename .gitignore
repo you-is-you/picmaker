@@ -3,6 +3,7 @@
 /tmp
 /public/assets/
 /config/database.yml
+/config/credentials.yml.enc
 /gcd_dataset_directory/
 *.sqlite3
 /config/secrets.yml
