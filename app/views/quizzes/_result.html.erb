@@ -10,9 +10,7 @@
                 <div class="embed-responsive mx-auto">
                     <%= image_tag "#{@quiz_result_img}" %>
                 </div>
-                <%= link_to "#{@quiz_result_img}" do %>
-                    <p class="text-muted">:<%= @quiz_result_img %></p>
-                <% end %>
+                <p class="text-muted">引用:<%= @quiz_result_img %></p>
             </div>
         <% end %>
         <div class="my-5">
@@ -42,7 +40,7 @@
     </div>
 </div>
 
-<div class="bg-warning rounded mb-3">
+<div class="bg-warning rounded p-3 mb-3">
     <div class="bg-white border border-dark py-3">
         <span class="font-weight-bold">
         <%= link_to "もう一度診断する", quiz, class:"font-weight-bold" , data: {"turbolinks" => false}  %>

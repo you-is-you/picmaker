@@ -418,11 +418,9 @@ $(".answers li").click(function() {
             $(".questionlistimg li[data-qimgno='" + q_img + "']").addClass("current");
             
         }
-        //質問に画像が設定されている場合、ページ内リンクで#resulttopへスムーススクロール
-        var position = $("#resulttop").offset().top;
-        $("html, body").animate({scrollTop:position}, 400, "swing");
-        //console.log();
-
+        //質問に画像が設定されている場合、ページ内リンクで#top_positionへスムーススクロール
+        var position = $("#top_position").offset().top;
+        $("html, body").animate({scrollTop:position}, 100, "swing");
         
     }else{
         //結果表示のスクリプト
@@ -486,6 +484,6 @@ $(".answers li").click(function() {
         console.log(saisyukey + ': ' + saisyuvalue);
         $("#result_value").val(saisyukey);
         // $.get( '/quizzes', {user_name:user_name, result:saisyukey} );
-        $('.quiz_action').submit();        
+        $('.quiz_action').submit();
     }
 })

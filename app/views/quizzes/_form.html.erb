@@ -33,7 +33,12 @@
 
     <div class="form-group">
         <%= form.label :title_img_option, "タイトル用動画か画像のオプション", class:"control-label " %>
-        <%= form.select :title_img_option, [['動画も画像も無用', 0], ['画像もしくはGIFをつける', 1], ['動画をつける', 2]], class:"form-control d-inline-block" %>
+        <%= form.select :title_img_option, [['動画も画像も無し', 0], ['画像もしくはGIFをつける', 1], ['動画をつける', 2]], class:"form-control d-inline-block" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :title_img_url, "タイトル用画像URL", class:"control-label" %>
+        <%= form.text_field :title_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#title_img_option" aria-expanded="false" aria-controls="title_img_option">
@@ -82,6 +87,11 @@
     <div class="form-group">
         <%= form.label :result1_img_select, "画像をつける？", class:"control-label " %>
         <%= form.select :result1_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :result1_img_url, "診断結果１の画像URL", class:"control-label" %>
+        <%= form.text_field :result1_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
     </div>
 
     <div class="form-group">
@@ -182,6 +192,11 @@
             <%= form.select :result2_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
         </div>
 
+    <div class="form-group">
+        <%= form.label :result2_img_url, "診断結果２の画像URL", class:"control-label" %>
+        <%= form.text_field :result2_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+    </div>
+
         <div class="form-group">
             <%= form.label :result2_content, "診断結果２の説明文", class:"control-label" %>
             <%= form.text_field :result2_content, id:"result2_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
@@ -210,6 +225,11 @@
             <%= form.select :result3_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
         </div>
 
+    <div class="form-group">
+        <%= form.label :result3_img_url, "診断結果３の画像URL", class:"control-label" %>
+        <%= form.text_field :result3_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+    </div>
+
         <div class="form-group">
             <%= form.label :result3_content, "診断結果３の説明文", class:"control-label" %>
             <%= form.text_field :result3_content, id:"result3_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
@@ -234,13 +254,18 @@
         </div>
 
         <div class="form-group">
-            <%= form.label :result3_img_select, "画像をつける？", class:"control-label " %>
-            <%= form.select :result3_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+            <%= form.label :result4_img_select, "画像をつける？", class:"control-label " %>
+            <%= form.select :result4_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :result4_img_url, "診断結果４の画像URL", class:"control-label" %>
+            <%= form.text_field :result4_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
             <%= form.label :result3_content, "診断結果４の説明文", class:"control-label" %>
-            <%= form.text_field :result3_content, id:"result3_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
+            <%= form.text_field :result4_content, id:"result3_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
 
         <button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#result5" aria-expanded="false" aria-controls="result5">
@@ -264,6 +289,11 @@
         <div class="form-group">
             <%= form.label :result5_img_select, "画像をつける？", class:"control-label " %>
             <%= form.select :result5_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :result5_img_url, "診断結果５の画像URL", class:"control-label" %>
+            <%= form.text_field :result5_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
@@ -294,6 +324,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :result6_img_url, "診断結果６の画像URL", class:"control-label" %>
+            <%= form.text_field :result6_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :result6_content, "診断結果６の説明文", class:"control-label" %>
             <%= form.text_field :result6_content, id:"result6_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -318,6 +353,11 @@
         <div class="form-group">
             <%= form.label :result7_img_select, "画像をつける？", class:"control-label " %>
             <%= form.select :result7_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :result7_img_url, "診断結果７の画像URL", class:"control-label" %>
+            <%= form.text_field :result7_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
@@ -348,6 +388,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :result8_img_url, "診断結果８の画像URL", class:"control-label" %>
+            <%= form.text_field :result8_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :result8_content, "診断結果８の説明文", class:"control-label" %>
             <%= form.text_field :result8_content, id:"result8_content", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -370,6 +415,11 @@
     <div class="form-group">
         <%= form.label :question1_img_select, "画像をつける？", class:"control-label " %>
         <%= form.select :question1_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :question1_img_url, "質問１の画像URL", class:"control-label" %>
+        <%= form.text_field :question1_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
     </div>
 
     <div class="form-group">
@@ -821,6 +871,11 @@
             <%= form.select :question2_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
         </div>
 
+    <div class="form-group">
+        <%= form.label :question2_img_url, "質問２の画像URL", class:"control-label" %>
+        <%= form.text_field :question2_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+    </div>
+
         <div class="form-group">
             <%= form.label :question2_option1, "質問２の選択肢１", class:"control-label" %>
             <%= form.text_field :question2_option1, id:"question2_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
@@ -1196,6 +1251,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :question3_img_url, "質問３の画像URL", class:"control-label" %>
+            <%= form.text_field :question3_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :question3_option1, "質問３の選択肢１", class:"control-label" %>
             <%= form.text_field :question3_option1, id:"question3_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -1566,6 +1626,11 @@
         <div class="form-group">
             <%= form.label :question4_img_select, "画像をつける？", class:"control-label " %>
             <%= form.select :question4_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :question4_img_url, "質問４の画像URL", class:"control-label" %>
+            <%= form.text_field :question4_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
@@ -1944,6 +2009,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :question5_img_url, "質問５の画像URL", class:"control-label" %>
+            <%= form.text_field :question5_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :question5_option1, "質問５の選択肢１", class:"control-label" %>
             <%= form.text_field :question5_option1, id:"question5_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -2316,6 +2386,11 @@
         <div class="form-group">
             <%= form.label :question6_img_select, "画像をつける？", class:"control-label " %>
             <%= form.select :question6_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :question6_img_url, "質問６の画像URL", class:"control-label" %>
+            <%= form.text_field :question6_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
@@ -2694,6 +2769,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :question7_img_url, "質問７の画像URL", class:"control-label" %>
+            <%= form.text_field :question7_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :question7_option1, "質問７の選択肢１", class:"control-label" %>
             <%= form.text_field :question7_option1, id:"question7_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -3066,6 +3146,11 @@
         <div class="form-group">
             <%= form.label :question8_img_select, "画像をつける？", class:"control-label " %>
             <%= form.select :question8_img_select, [['画像をつけない', 0], ['画像をつける', 1]], class:"form-control d-inline-block" %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :question8_img_url, "質問８の画像URL", class:"control-label" %>
+            <%= form.text_field :question8_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
         </div>
 
         <div class="form-group">
@@ -3444,6 +3529,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :question9_img_url, "質問９の画像URL", class:"control-label" %>
+            <%= form.text_field :question9_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :question9_option1, "質問９の選択肢１", class:"control-label" %>
             <%= form.text_field :question9_option1, id:"question9_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -3819,6 +3909,11 @@
         </div>
 
         <div class="form-group">
+            <%= form.label :question10_img_url, "質問１０の画像URL", class:"control-label" %>
+            <%= form.text_field :question10_img_url, class:"form-control d-inline-block", placeholder:"画像を別のところから持ってきた場合、持ってきたところのURLを貼ると、相手も喜びます。" %>
+        </div>
+
+        <div class="form-group">
             <%= form.label :question10_option1, "質問１０の選択肢１", class:"control-label" %>
             <%= form.text_field :question10_option1, id:"question10_option1", class:"form-control d-inline-block", placeholder:"診断結果の詳しい説明はここに書いてください。" %>
         </div>
@@ -4175,8 +4270,16 @@
     <div class="alert alert-dark my-5"><i class="fa fa-star" aria-hidden="true"></i>オプション<i class="fa fa-star" aria-hidden="true"></i></div>
 
     <div class="form-group">
-        <%= form.label :theme, "テーマ", class:"control-label" %>
-        <%= form.text_area :theme, id:"theme", class:"form-control d-inline-block" %>
+        <%= form.label :theme1, "テーマ１", class:"control-label" %>
+        <%= form.text_field :theme1, id:"theme1", class:"form-control d-inline-block" %>
+    </div>
+    <div class="form-group">
+        <%= form.label :theme2, "テーマ２", class:"control-label" %>
+        <%= form.text_field :theme2, id:"theme2", class:"form-control d-inline-block" %>
+    </div>
+    <div class="form-group">
+        <%= form.label :theme3, "テーマ３", class:"control-label" %>
+        <%= form.text_field :theme3, id:"theme3", class:"form-control d-inline-block" %>
     </div>
 
     <button class="btn btn-info mb-4 btn-sm" type="button" data-toggle="collapse" data-target="#theme" aria-expanded="false" aria-controls="theme">
